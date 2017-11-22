@@ -5,7 +5,8 @@ using UnityEngine;
 public class FishSpawner : MonoBehaviour {
 
     public GameObject fish;
-    float randX;
+    int randX;
+    int randY;
     Vector2 whereToSpawnFish;
     public float spawnFishRate = 2f;
     float nextSpawn = 0.0f;
@@ -20,8 +21,9 @@ public class FishSpawner : MonoBehaviour {
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnFishRate;
-            randX = Random.Range(-8.4f, 8.4f);
-            whereToSpawnFish = new Vector2(randX, transform.position.y);
+            randX = Random.Range(-176, 176);
+            randY = Random.Range(-60, -30);
+            whereToSpawnFish = new Vector2(randX, randY);
             Instantiate(fish, whereToSpawnFish, Quaternion.identity);
         }
 	}
