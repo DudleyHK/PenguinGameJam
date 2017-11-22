@@ -34,12 +34,12 @@ public class Fly : AbstractBehaviour
         var fly = inputState.GetButtonValue(inputButtons[0]);
         var holdTime = inputState.GetButtonHoldTime(inputButtons[0]);
 
-        print("PlayerData state " + playerData.playerState);
         if (playerData.playerState == PlayerData.PlayerStates.AIRBORN)
         {
-            print("disable input");
             return;
         }
+
+
         if(fly && holdTime < 0.1f)
         {
             var boost = body2D.velocity.y + speed;

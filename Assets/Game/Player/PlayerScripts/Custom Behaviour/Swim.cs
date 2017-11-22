@@ -36,15 +36,13 @@ public class Swim : Fly
             Debug.Log("Player out or at top of water.");
             if (!applyBoost)
             {
-                body2D.AddForceAtPosition(Vector2.up * hopSpeed, transform.position);
+                body2D.AddForceAtPosition(Vector2.up * hopSpeed, transform.position, ForceMode2D.Impulse);
                 applyBoost = true;
             }
-            playerData.playerState = PlayerData.PlayerStates.AIRBORN;
             underWater = false;
         }
         else
         {
-            playerData.playerState = PlayerData.PlayerStates.SWIMMING;
             applyBoost = false;
             underWater = true;
         }
