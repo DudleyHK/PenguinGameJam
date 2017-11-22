@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
         walkBehaviour  = GetComponent<Walk>();
         animator       = GetComponent<Animator>();
 		collisionState = GetComponent<CollisionState>();
-        playerData     = new PlayerData(PlayerState.NONE, 0.0f, 0.0f, 1.0f);
+        playerData     = GetComponent<PlayerData>(); //PlayerState.NONE, 0.0f, 0.0f, 1.0f
     }
 
 	private void Update()
