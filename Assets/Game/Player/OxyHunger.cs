@@ -61,14 +61,20 @@ public class OxyHunger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        InWater = true;
-        Debug.Log("InWater");
+        if (other.tag == "Water")
+        {
+            InWater = true;
+            Debug.Log("InWater");
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        InWater = false;
-        Debug.Log("OutWater");
+        if (other.tag == "Water")
+        {
+            InWater = false;
+            Debug.Log("OutWater");
+        }
     }
 
     void OnGUI()
