@@ -5,7 +5,7 @@ using UnityEngine;
 public class OxyHunger : MonoBehaviour {
 
     float oxygen = 5, maxOxygen = 5;
-    float health = 5, maxHealth = 5;
+    float hunger = 5, maxHunger = 5;
 
     public bool InWater;
     public GameObject player;
@@ -40,10 +40,10 @@ public class OxyHunger : MonoBehaviour {
             if (oxygen < 0)
             {
                 oxygen = 0;
-                health -= Time.deltaTime * 2;
-                if (health < 0)
+                hunger -= Time.deltaTime * 2;
+                if (hunger < 0)
                 {
-                    health = 0;
+                    hunger = 0;
                 }
                 Debug.Log("Drowning!!!");
             }
@@ -53,9 +53,9 @@ public class OxyHunger : MonoBehaviour {
             oxygen += Time.deltaTime * 2.0f;
         }
 
-        if (!InWater && health < maxHealth)
+        if (!InWater && hunger < maxHunger)
         {
-            health += Time.deltaTime / 2.0f;
+            hunger += Time.deltaTime / 2.0f;
         }
 	}
 
@@ -77,7 +77,7 @@ public class OxyHunger : MonoBehaviour {
         float rectWidthO = ratioO * Screen.width / 5;
         OxygenRect.width = rectWidthO;
 
-        float ratioH =  health / maxHealth;
+        float ratioH =  hunger / maxHunger;
         float rectWidthH = ratioH * Screen.width / 5;
         HungerRect.width = rectWidthH;
 
