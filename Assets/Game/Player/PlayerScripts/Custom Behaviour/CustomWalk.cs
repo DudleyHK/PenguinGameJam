@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class CustomWalk : Walk
 {
-    public Fly fly;
-    
-
     protected override void Update()
     {
         running = false;
@@ -16,15 +13,13 @@ public class CustomWalk : Walk
         var right = inputState.GetButtonValue(inputButtons[0]);
         var left = inputState.GetButtonValue(inputButtons[1]);
 
-        if(fly.flying)
+        if (right || left)
         {
-            if(right || left)
-            {
-                var tempSpeed = speed;
+            var tempSpeed = speed;
 
-                var velX = tempSpeed * (float)inputState.direction;
-                body2D.velocity = new Vector2(velX, body2D.velocity.y);
-            }
+            var velX = tempSpeed * (float)inputState.direction;
+            body2D.velocity = new Vector2(velX, body2D.velocity.y);
         }
+
     }
 }

@@ -8,9 +8,10 @@ public class Fly : AbstractBehaviour
     public float speed = 95f;
     public bool flying = false;
     public float terminalSpeed = 200f;
+    public PlayerData playerData;
 
 
-    private void Update()
+    protected virtual void Update()
     {
         SetFlying();
         FlyMovement();
@@ -26,13 +27,18 @@ public class Fly : AbstractBehaviour
         {
             flying = false;
         }
-
     }
 
     private void FlyMovement()
     {
         var fly = inputState.GetButtonValue(inputButtons[0]);
         var holdTime = inputState.GetButtonHoldTime(inputButtons[0]);
+
+        if (playerData.playerState == PlayerData.PlayerStates.AIRBORN)
+        {
+            return;
+        }
+
 
         if(fly && holdTime < 0.1f)
         {
