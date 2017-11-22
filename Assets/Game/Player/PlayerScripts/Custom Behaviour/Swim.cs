@@ -10,6 +10,15 @@ public class Swim : Fly
     public float hopSpeed = 10f;
 
 
+    private void Start()
+    {
+        if(water == null)
+        {
+            var findWater = GameObject.FindGameObjectWithTag("Water");
+            water = findWater;
+        }
+    }
+
 
     protected override void Update()
     {

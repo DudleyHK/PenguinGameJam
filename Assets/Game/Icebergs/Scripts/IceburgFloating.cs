@@ -56,7 +56,7 @@ public class IceburgFloating : MonoBehaviour {
                 && 0 + angleOfResistance > this.transform.eulerAngles.z)
             {
                 Debug.Log(transform.eulerAngles.z);
-                angularVelocity = 
+                //angularVelocity = 
                 //angularVelocity *= slowDownSpeed * Time.deltaTime;
             }
 
