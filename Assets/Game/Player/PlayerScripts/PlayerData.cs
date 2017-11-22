@@ -10,6 +10,7 @@ public class PlayerData : MonoBehaviour
         GROUNDED = 1,
         SWIMMING = 2,
         DEAD = 3,
+        AIRBORN = 4
     }
 
     public PlayerStates playerState;

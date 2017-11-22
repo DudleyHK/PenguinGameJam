@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
 		{
 			ChangeAnimationState (0);
 		}
-		if (inputState.absVelX > 0) 
+		if (inputState.absVelX > 0 && collisionState.standing) 
 		{
 			ChangeAnimationState (1);
 		}
