@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Oxygen : MonoBehaviour {
+public class OxyHunger : MonoBehaviour {
 
     float oxygen = 5, maxOxygen = 5;
     float health = 5, maxHealth = 5;
