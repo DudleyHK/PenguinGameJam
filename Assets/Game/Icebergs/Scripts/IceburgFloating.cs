@@ -14,7 +14,7 @@ public class IceburgFloating : MonoBehaviour {
 
     //Angular Physics
     [SerializeField]
-    float angularVelocity, angularAcceleration;
+    float angularVelocity, angularAcceleration, speedMultiplyer, angleOfResistance, slowDownSpeed;
 
 	// Use this for initialization
 	void Start ()
@@ -28,32 +28,47 @@ public class IceburgFloating : MonoBehaviour {
     {
 		if(collidingPlayers.Count > 0)
         {
-            
+
             //Make it turn based off whichever mass causes more force in the given direction
-            foreach(GameObject guyOnIce in collidingPlayers)
+            foreach (GameObject guyOnIce in collidingPlayers)
             {
-                if(centrePoint.position.x < guyOnIce.transform.position.x)
+                if(centrePoint.position.x > guyOnIce.transform.position.x)
                 {
                     angularAcceleration += guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(centrePoint.position, guyOnIce.transform.position);
                 }
-                else if( guyOnIce.transform.position.x < centrePoint.position.x)
+                else if( guyOnIce.transform.position.x > centrePoint.position.x)
                 {
                     angularAcceleration -= guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(centrePoint.position, guyOnIce.transform.position);
                 }
+                else
+                {
+                    Debug.Log("Equilibrium ting");
+                }
+
             }
-
-            angularVelocity += angularAcceleration;
-
 
         }
         else
-        {
-            //turn back
+        {      
+            if(180 - angleOfResistance < this.transform.eulerAngles.z  
+                &&  180 + angleOfResistance > this.transform.eulerAngles.z
+                || 0 - angleOfResistance < this.transform.eulerAngles.z
+                && 0 + angleOfResistance > this.transform.eulerAngles.z)
+            {
+                Debug.Log(transform.eulerAngles.z);
+                angularVelocity = Mathf.Sin( Time.time * 2) * 10;
+                //angularVelocity *= slowDownSpeed * Time.deltaTime;
+            }
+
         }
 
+        angularVelocity += angularAcceleration * Time.deltaTime * speedMultiplyer;
 
+        this.GetComponent<Rigidbody2D>().angularVelocity = angularVelocity;
 
-	}
+        angularAcceleration = 0;
+
+    }
 
 
     //When a player touches the ber, it'll be added to list of touching objects

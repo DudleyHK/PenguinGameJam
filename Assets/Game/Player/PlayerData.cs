@@ -27,10 +27,10 @@ public class PlayerData : MonoBehaviour
 
     void Start()
     {
-        playerState = PlayerStates.NONE;
-        hungerLevel = 0.0f;
-        oxygenLevel = 0.0f;
-        mass = 0.0f;
+        //playerState = PlayerStates.NONE;
+        //hungerLevel = 0.0f;
+        //oxygenLevel = 0.0f;
+        //mass = 0.0f;
     }
 
     public PlayerStates PlayerState
