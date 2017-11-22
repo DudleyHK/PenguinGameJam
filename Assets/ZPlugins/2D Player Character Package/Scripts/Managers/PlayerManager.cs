@@ -10,18 +10,16 @@ public class PlayerManager : MonoBehaviour
     private Walk walkBehaviour;
     private Animator animator;
 	private CollisionState collisionState;
-    [SerializeField]
-    private PlayerData playerData;
+    public PlayerData PlayerData { get { return GetComponent<PlayerData>(); } }
 
 
 
     private void Start()
-    {
+    { 
         inputState     = GetComponent<InputState>();
         walkBehaviour  = GetComponent<Walk>();
         animator       = GetComponent<Animator>();
 		collisionState = GetComponent<CollisionState>();
-        playerData     = GetComponent<PlayerData>(); //PlayerState.NONE, 0.0f, 0.0f, 1.0f
     }
 
 	private void Update()
@@ -49,13 +47,5 @@ public class PlayerManager : MonoBehaviour
 
     private void initialisePlayerData()
     {
-    }
-
-    PlayerData PlayerData
-    {
-        get
-        {
-            return playerData;
-        }
     }
 }
