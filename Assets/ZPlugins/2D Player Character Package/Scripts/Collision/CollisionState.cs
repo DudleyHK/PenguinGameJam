@@ -13,14 +13,15 @@ public class CollisionState : MonoBehaviour
 	public float collisionRadius = 10f;
 	public Color debugCollisionColour = Color.red;
 
+    public Collider2D collisionBox;
 	private InputState inputState;
-
 
 
 
 	private void Awake () 
 	{
 		inputState = GetComponent<InputState> ();
+        collisionBox = GetComponent<Collider2D>();
 	}
 
 

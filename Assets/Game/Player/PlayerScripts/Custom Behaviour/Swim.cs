@@ -9,6 +9,8 @@ public class Swim : Fly
     public bool underWater = false;
     public bool applyBoost = false;
     public float hopSpeed = 10f;
+    public float teleportSpeed = 3f;
+    public float distanceBreak = 0.75f;
 
 
     private void Start()
@@ -25,10 +27,8 @@ public class Swim : Fly
     {
         base.Update();
 
-        if(playerData.playerState != PlayerData.PlayerStates.SWIMMING)
-            return;
-
-        HasSurfaced();
+        if(playerData.playerState != PlayerData.PlayerStates.GROUNDED)
+            HasSurfaced();
     }
 
     /// <summary>
@@ -36,24 +36,28 @@ public class Swim : Fly
     /// </summary>
     private void HasSurfaced()
     {
+        
         // Is the player above the water?
         if (transform.position.y >= Water.waterOrigin.y + (water.transform.lossyScale.y / 2f))
         {
-           Debug.Log("Player out or at top of water.");
+          // Debug.Log("Player out or at top of water.");
 
-            // check which lane the player is in. 
-            var laneNumber = iceburgManager.GetLane(transform.position);
-            Debug.Log("Lane number is " + laneNumber);
+            if(playerData.playerState == PlayerData.PlayerStates.SWIMMING)
+            {
+                // check which lane the player is in. 
+                var laneNumber = iceburgManager.GetLane(transform.position);
+                //Debug.Log("Lane number is " + laneNumber);
 
-            // is there a iceburg in that lane?
-            var targetNode = iceburgManager.GetIceburgJumpNode(laneNumber);
-            if(targetNode == Vector2.zero)
-            {
-                Debug.Log("Run jump animation");
-            }
-            else
-            {
-               StartCoroutine(TeleportToPlatform(targetNode));
+                // is there a iceburg in that lane?
+                var targetNode = iceburgManager.GetIceburgJumpNode(laneNumber);
+                if(targetNode == Vector2.zero)
+                {
+                    Debug.Log("Run jump animation");
+                }
+                else
+                {
+                    StartCoroutine(TeleportToPlatform(targetNode));
+                }
             }
             underWater = false;
         }
@@ -67,13 +71,21 @@ public class Swim : Fly
 
     private IEnumerator TeleportToPlatform(Vector2 targetNode)
     {
+        collisionState.collisionBox.enabled = false;
         while(true)
         {
-            transform.position = Vector2.Lerp(transform.position, targetNode, 5f * Time.deltaTime);
-            if(Vector2.Distance(transform.position, targetNode) <= 0.1f) break;
+            transform.position = Vector3.LerpUnclamped(transform.position, targetNode, teleportSpeed * Time.deltaTime);
+            
+            var dist = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), targetNode);
+           // Debug.Log("Distance " + dist);
+            //Debug.DrawLine(transform.position, targetNode);
+
+            if(Vector2.Distance(transform.position, targetNode) <= distanceBreak) break;
 
             yield return false;
         }
+
+        collisionState.collisionBox.enabled = true;
         yield return true;
     }
 }

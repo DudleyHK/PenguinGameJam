@@ -35,7 +35,7 @@ public class IceburgManager : MonoBehaviour
         // One extra for the end lane position.
         for(var i = 0; i < (numberOfLanes + 1); i++)
         {
-            var clone = Instantiate(debugObj, new Vector3(laneOriginX, topLeft.y, topLeft.z), Quaternion.identity);
+            //var clone = Instantiate(debugObj, new Vector3(laneOriginX, topLeft.y, topLeft.z), Quaternion.identity);
             lanes.Add(laneOriginX);
             laneOriginX += laneWidth;
         }
@@ -87,8 +87,8 @@ public class IceburgManager : MonoBehaviour
             return Vector2.zero;
         }
 
-        var jumpNodeY = iceburg.transform.position.y + iceburg.transform.localScale.y;
-       // var clone = Instantiate(debugObj, new Vector2(iceburg.transform.position.x, jumpNodeY), Quaternion.identity);
+        var jumpNodeY = iceburg.transform.position.y + (iceburg.transform.localScale.y * 4f);
+        //var clone = Instantiate(debugObj, new Vector2(iceburg.transform.position.x, jumpNodeY), Quaternion.identity);
         return new Vector2(iceburg.transform.position.x, jumpNodeY);
         
     }
