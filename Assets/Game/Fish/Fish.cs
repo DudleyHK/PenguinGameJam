@@ -10,7 +10,9 @@ public class Fish : MonoBehaviour {
     float maxXPos = 190f;
     float minXPos = -190f;
 
-    float fishSpeed = 12f;
+    float directionModifier = -1;
+    float direciton;
+    float fishSpeed = 24f;
 
     Rigidbody2D fishBody;
 
@@ -41,7 +43,14 @@ public class Fish : MonoBehaviour {
 	{
 		if (other.tag == "Water") 
 		{
-			fishTransform.position = fishTransform.position - new Vector3 (520f, 0f, 0f);
-		}
+            if (transform.position.x > 250)
+            {
+                fishTransform.position = fishTransform.position - new Vector3(520f, 0f, 0f);
+            }
+            else if (transform.position.x < 250)
+            {
+                fishTransform.position = fishTransform.position - new Vector3(0f, 0f, 0f);
+            }
+        }
 	}
 }
