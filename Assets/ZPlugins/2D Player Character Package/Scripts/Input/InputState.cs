@@ -66,7 +66,7 @@ public class InputState : MonoBehaviour
             state.holdTime += Time.deltaTime;
             //print("Button " + key +  " down for " + state.holdTime);
         }
-        //print("Last button presed " + lastButtonReleased);
+        print("Last button presed " + lastButtonReleased);
         state.value = value;
     }
 
