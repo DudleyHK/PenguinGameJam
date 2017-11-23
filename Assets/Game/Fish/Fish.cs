@@ -13,10 +13,12 @@ public class Fish : MonoBehaviour {
     float fishSpeed = 12f;
 
     Rigidbody2D fishBody;
+	bool fishWay;
 
 	// Use this for initialization
 	void Start ()
     {
+		fishWay = true;
         fishTransform = this.transform;
         fishBody = this.GetComponent<Rigidbody2D>();
     }
@@ -24,23 +26,35 @@ public class Fish : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {       
-        // Check to see if the fish has hit the boundaries
-        // If it has hit the right boundary, teleport to the left side
-        //if (fishTransform.position.x >= maxXPos)
-        //{
-        //  fishTransform.position = fishTransform.position - new Vector3 (380f, 0f, 0f);
-        //}
-
         // Always move foward
-        Vector2 fishVel = fishBody.velocity;
-        fishVel.x = fishSpeed;
-        fishBody.velocity = fishVel;
+		Vector2 fishVel = fishBody.velocity;
+		if (fishWay) {
+			// Move right if left is true
+			fishVel.x = fishSpeed;
+		}
+		else if (!fishWay) {
+			// Move left if left is false
+			fishVel.x = -fishSpeed;
+		}
+		fishBody.velocity = fishVel;
+
+	}
+
+	public void setFishWay(bool _boolean)
+	{
+		fishWay = _boolean;
+	}
+
+	public bool getFishWay()
+	{
+		return fishWay;
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
+		//Once left water go back
 		if (other.tag == "Water") 
-		{
+		{	
 			fishTransform.position = fishTransform.position - new Vector3 (520f, 0f, 0f);
 		}
 	}
