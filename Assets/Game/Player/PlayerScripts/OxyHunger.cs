@@ -40,7 +40,7 @@ public class OxyHunger : MonoBehaviour {
             {
                 hunger = 0;
             }
-            hunger -= Time.deltaTime * 2;
+            hunger -= Time.deltaTime * 1;
 
             if (InWater)
             {
