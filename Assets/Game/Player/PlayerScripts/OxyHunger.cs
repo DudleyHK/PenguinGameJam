@@ -40,7 +40,8 @@ public class OxyHunger : MonoBehaviour {
             {
                 hunger = 0;
             }
-            hunger -= Time.deltaTime * 1;
+
+            hunger -= Time.deltaTime / 4;
 
             if (InWater)
             {
@@ -48,7 +49,7 @@ public class OxyHunger : MonoBehaviour {
                 if (oxygen < 0)
                 {
                     oxygen = 0;
-                    Debug.Log("Drowning!!!");
+                    //Debug.Log("Drowning!!!");
                 }
             }
             else if (!InWater && oxygen < maxOxygen)
@@ -63,13 +64,13 @@ public class OxyHunger : MonoBehaviour {
         if (other.tag == "Water")
         {
             InWater = true;
-            Debug.Log("InWater");
+            //Debug.Log("InWater");
         }
 
         if (other.tag == "Fish")
         {
             Destroy(other.gameObject);
-            ++hunger;
+            hunger += 0.5f;
             Debug.Log("Eaten Fish!");
         }
     }
@@ -79,7 +80,7 @@ public class OxyHunger : MonoBehaviour {
         if (other.tag == "Water")
         {
             InWater = false;
-            Debug.Log("OutWater");
+            //Debug.Log("OutWater");
         }
     }
 
