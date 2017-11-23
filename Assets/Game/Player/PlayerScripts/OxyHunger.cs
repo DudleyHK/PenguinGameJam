@@ -5,7 +5,7 @@ using UnityEngine;
 public class OxyHunger : MonoBehaviour {
 
     float oxygen = 5, maxOxygen = 5;
-    float hunger = 5, maxHunger = 5;
+    float hunger = 10, maxHunger = 10;
 
     public bool InWater;
     public GameObject player;
@@ -34,28 +34,27 @@ public class OxyHunger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (InWater)
+        if (hunger != 0)
         {
-            oxygen -= Time.deltaTime;
-            if (oxygen < 0)
+            if (hunger < 0)
             {
-                oxygen = 0;
-                hunger -= Time.deltaTime * 2;
-                if (hunger < 0)
-                {
-                    hunger = 0;
-                }
-                Debug.Log("Drowning!!!");
+                hunger = 0;
             }
-        }
-        else if (!InWater && oxygen < maxOxygen)
-        {
-            oxygen += Time.deltaTime * 2.0f;
-        }
+            hunger -= Time.deltaTime * 2;
 
-        if (!InWater && hunger < maxHunger)
-        {
-            hunger += Time.deltaTime / 2.0f;
+            if (InWater)
+            {
+                oxygen -= Time.deltaTime;
+                if (oxygen < 0)
+                {
+                    oxygen = 0;
+                    Debug.Log("Drowning!!!");
+                }
+            }
+            else if (!InWater && oxygen < maxOxygen)
+            {
+                oxygen += Time.deltaTime * 2.0f;
+            }
         }
 	}
 
@@ -65,6 +64,13 @@ public class OxyHunger : MonoBehaviour {
         {
             InWater = true;
             Debug.Log("InWater");
+        }
+
+        if (other.tag == "Fish")
+        {
+            Destroy(other.gameObject);
+            ++hunger;
+            Debug.Log("Eaten Fish!");
         }
     }
 
