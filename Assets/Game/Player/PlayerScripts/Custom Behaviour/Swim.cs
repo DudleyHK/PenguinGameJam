@@ -35,14 +35,10 @@ public class Swim : Fly
     /// </summary>
     private void HasSurfaced()
     {
-        var waterOffsetX = water.transform.position.x + (water.transform.lossyScale.x / 2f);
-        var waterOffsetY = water.transform.position.y - (water.transform.lossyScale.y / 2f);
-        var waterOrigin = new Vector2(waterOffsetX, waterOffsetY);
-
         // Is the player above the water?
-        if (transform.position.y >= waterOrigin.y + (water.transform.lossyScale.y / 2f))
+        if (transform.position.y >= Water.waterOrigin.y + (water.transform.lossyScale.y / 2f))
         {
-            Debug.Log("Player out or at top of water.");
+            //Debug.Log("Player out or at top of water.");
             if (!applyBoost)
             {
                 body2D.AddForceAtPosition(Vector2.up * hopSpeed, transform.position, ForceMode2D.Impulse);

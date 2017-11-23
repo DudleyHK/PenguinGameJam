@@ -64,7 +64,7 @@ public class InputState : MonoBehaviour
         else if(state.value && value)
         {
             state.holdTime += Time.deltaTime;
-            //print("Button " + key +  " down for " + state.holdTime);
+           // print("Button " + key +  " down for " + state.holdTime);
         }
         print("Last button presed " + lastButtonReleased);
         state.value = value;
