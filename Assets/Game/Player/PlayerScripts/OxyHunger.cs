@@ -21,12 +21,12 @@ public class OxyHunger : MonoBehaviour {
         InWater = false;
         player = GameObject.FindGameObjectWithTag("Player");
 
-        OxygenRect = new Rect(player.transform.position.x + 30, player.transform.position.y + 25, 5.0f, 5.0f);
+		OxygenRect = new Rect(player.transform.position.x + 20, player.transform.position.y - 50, 5.0f, 5.0f);
         OxygenTex = new Texture2D(1, 1);
         OxygenTex.SetPixel(0, 0, Color.white);
         OxygenTex.Apply();
 
-        HungerRect = new Rect(player.transform.position.x + 30, player.transform.position.y + 10, 5.0f, 5.0f);
+        HungerRect = new Rect(player.transform.position.x + 20, player.transform.position.y - 60, 5.0f, 5.0f);
         HungerTex = new Texture2D(1, 1);
         HungerTex.SetPixel(0, 0, Color.red);
         HungerTex.Apply();
