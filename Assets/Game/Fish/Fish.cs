@@ -10,15 +10,17 @@ public class Fish : MonoBehaviour {
     float maxXPos = 190f;
     float minXPos = -190f;
 
+    [SerializeField]
     float fishSpeed = 12f;
 
     Rigidbody2D fishBody;
-	bool fishWay;
+
+    [SerializeField]
+    bool fishWay;
 
 	// Use this for initialization
 	void Start ()
     {
-		fishWay = true;
         fishTransform = this.transform;
         fishBody = this.GetComponent<Rigidbody2D>();
     }
@@ -40,15 +42,20 @@ public class Fish : MonoBehaviour {
 
 	}
 
-	public void setFishWay(bool _boolean)
+	public void setDirectionLeft(bool _boolean)
 	{
 		fishWay = _boolean;
 	}
 
-	public bool getFishWay()
+	public bool getDirectionLeft()
 	{
 		return fishWay;
 	}
+
+    public void setFishSpeed(int _speed)
+    {
+        fishSpeed = _speed;
+    }
 
 	void OnTriggerExit2D(Collider2D other)
 	{
