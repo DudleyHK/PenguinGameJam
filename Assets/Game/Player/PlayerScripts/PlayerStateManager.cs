@@ -35,6 +35,7 @@ public class PlayerStateManager : MonoBehaviour
             {
                 playerData.playerState = PlayerData.PlayerStates.GROUNDED;
             }
+            return;
         }
 
         // If the player is underwater and not standing

@@ -29,7 +29,7 @@ public class InputAxisState
     public Condition condition;
 
     public bool value
-    {
+    { 
         get
         {
             var val = Input.GetAxis(axisName);
