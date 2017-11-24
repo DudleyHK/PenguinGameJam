@@ -17,10 +17,15 @@ public class OxygenHungerHandler : MonoBehaviour
     float hungerIncrement;
 
     [SerializeField]
-    public GameObject bubble;
+    public GameObject oxygenSprite;
     [SerializeField]
-    public GameObject bubbleFill;
-    
+    public GameObject oxygenSpriteFill;
+
+    [SerializeField]
+    public GameObject hungerSprite;
+    [SerializeField]
+    public GameObject hungerSpriteFill;
+
 
     // Use this for initialization
     void Start()
@@ -43,13 +48,13 @@ public class OxygenHungerHandler : MonoBehaviour
 
         if (data.OxygenLevel > data.MaxOxygen / 2)
         {
-            bubble.SetActive(false);
-            bubbleFill.SetActive(false);
+            oxygenSprite.SetActive(false);
+            oxygenSpriteFill.SetActive(false);
         }
             else
         {
-            bubble.SetActive(true);
-            bubbleFill.SetActive(true);
+            oxygenSprite.SetActive(true);
+            oxygenSpriteFill.SetActive(true);
         }
 
         if (data.InWater)
@@ -125,8 +130,8 @@ public class OxygenHungerHandler : MonoBehaviour
 
     void positionBubble()
     {
-        bubble.transform.position = player.transform.position - new Vector3(12.0f, -6.0f, 1.0f);
-        bubbleFill.transform.position = player.transform.position - new Vector3(12.0f, -6.0f, 0.0f);
-        bubbleFill.transform.localScale = new Vector3(bubbleFill.transform.localScale.x, data.OxygenLevel, bubbleFill.transform.localScale.z);
+        oxygenSprite.transform.position = player.transform.position - new Vector3(12.0f, -6.0f, 1.0f);
+        oxygenSpriteFill.transform.position = player.transform.position - new Vector3(12.0f, -6.0f, 0.0f);
+        oxygenSpriteFill.transform.localScale = new Vector3(oxygenSpriteFill.transform.localScale.x, data.OxygenLevel, oxygenSpriteFill.transform.localScale.z);
     }
 }
