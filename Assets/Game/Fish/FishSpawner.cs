@@ -13,7 +13,7 @@ public class FishSpawner : MonoBehaviour {
     float minY = -80f, maxY = 80f;
 
 	bool leftSpawn;
-    Vector2 whereToSpawnFish;
+    Vector3 spawnLocation;
     [SerializeField]
     float spawnFishRate = 2f;
     float nextSpawn = 0.0f;
@@ -32,8 +32,8 @@ public class FishSpawner : MonoBehaviour {
             int randomFishSpeed = Random.Range(12, 60);
 			if (leftSpawn == true) {
 				nextSpawn = Time.time + spawnFishRate;
-				whereToSpawnFish = new Vector2(-260f, randY);
-                GameObject instancedFish = (GameObject)Instantiate(generateFish(), whereToSpawnFish, Quaternion.identity);
+				spawnLocation = new Vector3(-260f, randY, 60);
+                GameObject instancedFish = (GameObject)Instantiate(generateFish(), spawnLocation, Quaternion.identity);
                 fishObject = instancedFish.GetComponent<Fish>();
                 fishObject.setDirectionLeft(true);
                 fishObject.setFishSpeed(randomFishSpeed);
@@ -42,9 +42,9 @@ public class FishSpawner : MonoBehaviour {
 
             else if (leftSpawn == false) {
 				nextSpawn = Time.time + spawnFishRate;
-                
-                whereToSpawnFish = new Vector2(260f, randY);
-                GameObject instancedFish = (GameObject)Instantiate(generateFish(), whereToSpawnFish, Quaternion.Euler(180.0f, 0.0f, 180.0f));
+
+                spawnLocation = new Vector3(260f, randY, 60);
+                GameObject instancedFish = (GameObject)Instantiate(generateFish(), spawnLocation, Quaternion.Euler(180.0f, 0.0f, 180.0f));
                 fishObject = instancedFish.GetComponent<Fish>();
                 fishObject.setDirectionLeft(false);
                 fishObject.setFishSpeed(randomFishSpeed);
