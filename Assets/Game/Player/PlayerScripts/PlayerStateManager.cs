@@ -33,7 +33,7 @@ public class PlayerStateManager : MonoBehaviour
             // Then they are above water
             else
             {
-                playerData.playerState = PlayerData.PlayerStates.GROUNDED;
+                playerData.PlayerState = PlayerData.PlayerStates.GROUNDED;
             }
             return;
         }
@@ -41,12 +41,12 @@ public class PlayerStateManager : MonoBehaviour
         // If the player is underwater and not standing
         if (swim.underWater)
         {
-            playerData.playerState = PlayerData.PlayerStates.SWIMMING;
+            playerData.PlayerState = PlayerData.PlayerStates.SWIMMING;
         }
         // If the player is above water and not standing
         else
         {
-            playerData.playerState = PlayerData.PlayerStates.AIRBORN;
+            playerData.PlayerState = PlayerData.PlayerStates.AIRBORN;
         }
     }
 }

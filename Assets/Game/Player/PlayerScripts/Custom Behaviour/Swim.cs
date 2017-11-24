@@ -27,7 +27,7 @@ public class Swim : Fly
     {
         base.Update();
 
-        if(playerData.playerState != PlayerData.PlayerStates.GROUNDED)
+        if(playerData.PlayerState != PlayerData.PlayerStates.GROUNDED)
             HasSurfaced();
     }
 
@@ -42,7 +42,7 @@ public class Swim : Fly
         {
           // Debug.Log("Player out or at top of water.");
 
-            if(playerData.playerState == PlayerData.PlayerStates.SWIMMING)
+            if(playerData.PlayerState == PlayerData.PlayerStates.SWIMMING)
             {
                 // check which lane the player is in. 
                 var laneNumber = iceburgManager.GetLane(transform.position);
@@ -72,6 +72,7 @@ public class Swim : Fly
     private IEnumerator TeleportToPlatform(Vector2 targetNode)
     {
         collisionState.collisionBox.enabled = false;
+        //body2D.bodyType = RigidbodyType2D.Kinematic;
         while(true)
         {
             transform.position = Vector3.LerpUnclamped(transform.position, targetNode, teleportSpeed * Time.deltaTime);
@@ -86,6 +87,7 @@ public class Swim : Fly
         }
 
         collisionState.collisionBox.enabled = true;
+        //body2D.bodyType = RigidbodyType2D.Dynamic;
         yield return true;
     }
 }
