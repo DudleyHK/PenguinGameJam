@@ -32,11 +32,11 @@ public class IceburgFloating : MonoBehaviour {
             {
                 if(transform.position.x > guyOnIce.transform.position.x)
                 {
-                    angularAcceleration += guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(this.transform.position, guyOnIce.transform.position);
+                    angularAcceleration += guyOnIce.GetComponent<PlayerData>().Mass * Vector2.Distance(this.transform.position, guyOnIce.transform.position);
                 }
                 else if( guyOnIce.transform.position.x > transform.position.x)
                 {
-                    angularAcceleration -= guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(this.transform.position, guyOnIce.transform.position);
+                    angularAcceleration -= guyOnIce.GetComponent<PlayerData>().Mass * Vector2.Distance(this.transform.position, guyOnIce.transform.position);
                 }
                 else
                 {

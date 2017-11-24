@@ -34,7 +34,7 @@ public class Fly : AbstractBehaviour
         var fly = inputState.GetButtonValue(inputButtons[0]);
         var holdTime = inputState.GetButtonHoldTime(inputButtons[0]);
 
-        if (playerData.playerState == PlayerData.PlayerStates.AIRBORN)
+        if (playerData.PlayerState == PlayerData.PlayerStates.AIRBORN)
         {
             return;
         }

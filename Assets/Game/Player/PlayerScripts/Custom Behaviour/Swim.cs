@@ -27,7 +27,7 @@ public class Swim : Fly
     {
         base.Update();
 
-        if(playerData.playerState != PlayerData.PlayerStates.GROUNDED)
+        if(playerData.PlayerState != PlayerData.PlayerStates.GROUNDED)
             HasSurfaced();
     }
 
@@ -42,7 +42,7 @@ public class Swim : Fly
         {
           // Debug.Log("Player out or at top of water.");
 
-            if(playerData.playerState == PlayerData.PlayerStates.SWIMMING)
+            if(playerData.PlayerState == PlayerData.PlayerStates.SWIMMING)
             {
                 // check which lane the player is in. 
                 var laneNumber = iceburgManager.GetLane(transform.position);

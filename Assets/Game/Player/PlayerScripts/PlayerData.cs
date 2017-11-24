@@ -13,10 +13,21 @@ public class PlayerData : MonoBehaviour
         AIRBORN = 4
     }
 
-    public PlayerStates playerState;
-    public float hungerLevel;
-    public float oxygenLevel;
-    public float mass;
+
+    [SerializeField]
+    PlayerStates playerState;
+    [SerializeField]
+    float hungerLevel;
+    [SerializeField]
+    float oxygenLevel;
+    [SerializeField]
+    float maxHunger;
+    [SerializeField]
+    float maxOxygen;
+    [SerializeField]
+    float mass;
+    [SerializeField]
+    bool inWater;
 
     /*public PlayerData(PlayerState _PlayerState, float _OxygenLevel, float _HungerLevel, float _Mass)
     {
@@ -29,8 +40,10 @@ public class PlayerData : MonoBehaviour
     void Start()
     {
         //playerState = PlayerStates.NONE;
-        //hungerLevel = 0.0f;
-        //oxygenLevel = 0.0f;
+        hungerLevel = 50.0f;
+        oxygenLevel = 50.0f;
+        maxHunger = 50.0f;
+        maxOxygen = 50.0f;
         //mass = 0.0f;
     }
 
@@ -57,6 +70,22 @@ public class PlayerData : MonoBehaviour
             hungerLevel = value;
         }
     }
+    public float MaxHunger
+    {
+        get
+        {
+            return maxHunger;
+        }
+    }
+
+    public float MaxOxygen
+    {
+        get
+        {
+            return maxOxygen;
+        }
+    }
+
 
     public float OxygenLevel
     {
@@ -79,6 +108,17 @@ public class PlayerData : MonoBehaviour
         set
         {
             mass = value;
+        }
+    }
+    public bool InWater
+    {
+        get
+        {
+            return inWater;
+        }
+        set
+        {
+            inWater = value;
         }
     }
 

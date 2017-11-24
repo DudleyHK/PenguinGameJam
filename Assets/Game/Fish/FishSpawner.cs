@@ -30,7 +30,7 @@ public class FishSpawner : MonoBehaviour {
 				//randX = Random.Range(-176, 176);
 				randY = Random.Range(80f, -80f);
 				whereToSpawnFish = new Vector2(-260f, randY);
-                Debug.Log("spawing fish on the left.");
+               // Debug.Log("spawing fish on the left.");
                 GameObject instancedFish = (GameObject)Instantiate(fish, whereToSpawnFish, Quaternion.identity);
                 fishObject = instancedFish.GetComponent<Fish>();
                 fishObject.setDirectionLeft(true);
@@ -46,7 +46,7 @@ public class FishSpawner : MonoBehaviour {
                 fishObject = instancedFish.GetComponent<Fish>();
                 fishObject.setDirectionLeft(false);
                 fishObject.setFishSpeed(randomFishSpeed);
-                Debug.Log("spawing fish on the right.");
+               // Debug.Log("spawing fish on the right.");
             }
         }
 	}
