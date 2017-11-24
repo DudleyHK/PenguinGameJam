@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class IceburgFloating : MonoBehaviour {
 
     //Create array of all things touchin iceberg
     [SerializeField]
     List<GameObject> collidingPlayers = new List<GameObject> ();
 
-    //Point where tippage will occur
-    [SerializeField]
-    Transform centrePoint;
-
     //Angular Physics
     [SerializeField]
-    float angularVelocity, angularAcceleration, speedMultiplyer, angleOfResistance, slowDownSpeed;
+    float angularVelocity, angularAcceleration, speedMultiplyer, slowDownSpeed;
 
 	// Use this for initialization
 	void Start ()
@@ -28,17 +25,18 @@ public class IceburgFloating : MonoBehaviour {
     {
 		if(collidingPlayers.Count > 0)
         {
+            transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
             //Make it turn based off whichever mass causes more force in the given direction
             foreach (GameObject guyOnIce in collidingPlayers)
             {
-                if(centrePoint.position.x > guyOnIce.transform.position.x)
+                if(transform.position.x > guyOnIce.transform.position.x)
                 {
-                    angularAcceleration += guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(centrePoint.position, guyOnIce.transform.position);
+                    angularAcceleration += guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(this.transform.position, guyOnIce.transform.position);
                 }
-                else if( guyOnIce.transform.position.x > centrePoint.position.x)
+                else if( guyOnIce.transform.position.x > transform.position.x)
                 {
-                    angularAcceleration -= guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(centrePoint.position, guyOnIce.transform.position);
+                    angularAcceleration -= guyOnIce.GetComponent<PlayerData>().mass * Vector2.Distance(this.transform.position, guyOnIce.transform.position);
                 }
                 else
                 {
@@ -47,24 +45,20 @@ public class IceburgFloating : MonoBehaviour {
 
             }
 
+            angularVelocity += angularAcceleration * Time.deltaTime * speedMultiplyer;
+            this.GetComponent<Rigidbody2D>().angularVelocity = angularVelocity;
+
         }
         else
-        {      
-            if(180 - angleOfResistance < this.transform.eulerAngles.z  
-                &&  180 + angleOfResistance > this.transform.eulerAngles.z
-                || 0 - angleOfResistance < this.transform.eulerAngles.z
-                && 0 + angleOfResistance > this.transform.eulerAngles.z)
-            {
-                Debug.Log(transform.eulerAngles.z);
-                //angularVelocity = 
-                //angularVelocity *= slowDownSpeed * Time.deltaTime;
-            }
-
+        {
+            transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            transform.GetComponent<Rigidbody2D>().angularDrag = Mathf.Cos(this.transform.eulerAngles.z) + slowDownSpeed * slowDownSpeed;
+            //Debug.Log(Mathf.Cos(this.transform.localRotation.z) + slowDownSpeed * slowDownSpeed);
         }
 
-        angularVelocity += angularAcceleration * Time.deltaTime * speedMultiplyer;
+        
 
-        this.GetComponent<Rigidbody2D>().angularVelocity = angularVelocity;
+        
 
         angularAcceleration = 0;
 
@@ -86,3 +80,72 @@ public class IceburgFloating : MonoBehaviour {
     }
 
 }
+
+
+//    if (180 - angleOfResistance < this.transform.eulerAngles.z &&
+//        180 + angleOfResistance > this.transform.eulerAngles.z)
+//    {
+
+//        if (180 - angleOfResistance < this.transform.eulerAngles.z && 
+//            180 > this.transform.eulerAngles.z
+//            //&& angularVelocity > slowDownSpeed
+//            )
+//        {
+//            Debug.Log("aaa");
+
+//            angularAcceleration = slowDownSpeed * (transform.eulerAngles.z - 180 / angleOfResistance);
+//            Debug.Log("Angle = " + transform.eulerAngles.z);
+//            Debug.Log("Angle of RAngle is " + (transform.eulerAngles.z / angleOfResistance));
+//            Debug.Log("Acceleration is " + angularAcceleration);
+
+
+//        }
+//        else if (180 + angleOfResistance > this.transform.eulerAngles.z &&
+//            180 < this.transform.eulerAngles.z
+//            // && angularVelocity < slowDownSpeed
+//            )
+//        {
+//            Debug.Log("bbb");
+
+//            angularAcceleration = -slowDownSpeed * (transform.eulerAngles.z / angleOfResistance);
+//            Debug.Log("Angle = " + transform.eulerAngles.z);
+//            Debug.Log("Angle of RAngle is " + (transform.eulerAngles.z / angleOfResistance));
+//            Debug.Log("Acceleration is " + angularAcceleration);
+
+//        }
+//    }
+
+//    else if(0 + angleOfResistance > this.transform.eulerAngles.z )
+//    {
+//        if (0 - angleOfResistance < this.transform.eulerAngles.z //&&
+//            //0 < this.transform.eulerAngles.z 
+//            //&& angularVelocity < slowDownSpeed
+//            )
+//        {
+//            Debug.Log("ccc");
+
+//            angularAcceleration = slowDownSpeed * 10 *(transform.eulerAngles.z  / angleOfResistance);
+//            Debug.Log("Angle = " + transform.eulerAngles.z);
+//            Debug.Log("Angle of RAngle is " + (transform.eulerAngles.z / angleOfResistance));
+//            Debug.Log("Acceleration is " + angularAcceleration);
+
+//        }
+
+
+//    }
+
+//    else if (360 - angleOfResistance < this.transform.eulerAngles.z)
+//    {
+//        {
+//            Debug.Log("ddd");
+
+//            angularAcceleration = slowDownSpeed*  (transform.eulerAngles.z / angleOfResistance);
+//            Debug.Log("Angle = " + transform.eulerAngles.z);
+//            Debug.Log("Angle of RAngle is " + (transform.eulerAngles.z / angleOfResistance));
+//            Debug.Log("Acceleration is " + angularAcceleration);
+
+//        }
+//    }
+
+//    //Debug.Log(transform.eulerAngles.z);
+//    //Debug.Log(transform.localRotation.z);
