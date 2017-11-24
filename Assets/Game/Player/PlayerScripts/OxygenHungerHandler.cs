@@ -111,7 +111,7 @@ public class OxygenHungerHandler : MonoBehaviour
     {
         if (oxygenIncrement < 0.1)
         {
-            oxygenIncrement = 10;
+            oxygenIncrement = 25;
         }
         if (oxygenDecrement < 0.1)
         {
