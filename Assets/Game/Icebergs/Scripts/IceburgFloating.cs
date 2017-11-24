@@ -9,6 +9,8 @@ public class IceburgFloating : MonoBehaviour {
     [SerializeField]
     List<GameObject> collidingPlayers = new List<GameObject> ();
 
+    [SerializeField]
+    float meltedAmount = 0;
     //Angular Physics
     [SerializeField]
     float angularVelocity, angularAcceleration, speedMultiplyer, slowDownSpeed;
@@ -19,6 +21,19 @@ public class IceburgFloating : MonoBehaviour {
 		
 	}
 	
+    void Update()
+    {
+        if(this.transform.localScale.x > 0)
+        {
+            this.transform.localScale = new Vector3(this.transform.localScale.x - meltedAmount, this.transform.localScale.y, this.transform.localScale.z);
+            meltedAmount += 0.01f * Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
+    }
 
 	// Update is called once per frame
 	void FixedUpdate ()

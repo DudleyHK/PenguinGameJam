@@ -42,7 +42,6 @@ public class FishSpawner : MonoBehaviour {
 
             else if (leftSpawn == false) {
 				nextSpawn = Time.time + spawnFishRate;
-
                 spawnLocation = new Vector3(260f, randY, 60);
                 GameObject instancedFish = (GameObject)Instantiate(generateFish(), spawnLocation, Quaternion.Euler(180.0f, 0.0f, 180.0f));
                 fishObject = instancedFish.GetComponent<Fish>();
