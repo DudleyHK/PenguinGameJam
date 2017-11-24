@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: a6433b704be1a6844b5b79f23a13b4ee
-timeCreated: 1511539563
+<<<<<<< HEAD
+guid: ee242d82a0d9f4e458527f9535064f48
+timeCreated: 1511552270
+=======
+guid: 1ee20a01e4f7b784ab0287c333cf043b
+timeCreated: 1511551749
+>>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -40,7 +45,11 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
   spritePixelsToUnits: 1
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -58,6 +67,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -90,6 +100,8 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+=======
+>>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
   spriteSheet:
     serializedVersion: 2
     sprites: []
