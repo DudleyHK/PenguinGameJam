@@ -30,6 +30,6 @@ public class CameraManager : MonoBehaviour
     {
         var cameraPosition = this.transform.position;
         var velocity = (player.transform.position - cameraPosition) * acceleration;
-        transform.Translate(velocity.x, 0, 0);
+        //transform.Translate(0, velocity.y, 0);
     }
 }

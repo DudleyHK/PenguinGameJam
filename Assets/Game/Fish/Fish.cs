@@ -61,8 +61,8 @@ public class Fish : MonoBehaviour {
 	{
 		//Once left water go back
 		if (other.tag == "Water") 
-		{	
-			fishTransform.position = fishTransform.position - new Vector3 (520f, 0f, 0f);
-		}
+		{
+            Destroy(this.gameObject);
+        }
 	}
 }
