@@ -72,6 +72,7 @@ public class Swim : Fly
     private IEnumerator TeleportToPlatform(Vector2 targetNode)
     {
         collisionState.collisionBox.enabled = false;
+        //body2D.bodyType = RigidbodyType2D.Kinematic;
         while(true)
         {
             transform.position = Vector3.LerpUnclamped(transform.position, targetNode, teleportSpeed * Time.deltaTime);
@@ -86,6 +87,7 @@ public class Swim : Fly
         }
 
         collisionState.collisionBox.enabled = true;
+        //body2D.bodyType = RigidbodyType2D.Dynamic;
         yield return true;
     }
 }
