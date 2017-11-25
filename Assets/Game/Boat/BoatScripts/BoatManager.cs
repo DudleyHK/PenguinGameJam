@@ -54,11 +54,21 @@ public class BoatManager : MonoBehaviour
         }
 
 
+        if(netManager.netStates == NetManager.NetStates.Off)
+        {
+            boatAnimator.SetBool("Idle", true);
+        }
+        else
+        {
+            boatAnimator.SetBool("Idle", false);
+        }
+
 
         // Animation stuff
         boatAnimator.SetBool("ReelOut", false);
         boatAnimator.SetBool("ReelIn",  false);
         boatAnimator.SetBool("Catching",false);
+        //boatAnimator.SetBool("Idle",    false);
         if(netManager.netStates == NetManager.NetStates.ReelOut)
         {
             boatAnimator.SetBool("ReelOut", true);
