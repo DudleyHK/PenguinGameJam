@@ -18,14 +18,14 @@ public class Fade : MonoBehaviour
 
     private void Start()
     {
-        boatAnimator = boatManager.GetComponent<boatAnimator>();
+        boatAnimator = boatManager.GetComponent<Animator>();
     }
 
 
 
     private void Update()
     {
-        boatAnimator.SetInteger("AnimState", alpha);
+        boatAnimator.SetFloat("AnimState", alpha);
     }
 
 }
