@@ -1,14 +1,25 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 7a6cc85f612b34e42beb64196814ede5
-timeCreated: 1511552269
-=======
 guid: 1b4c5817804844842baeb6166a11e25f
-timeCreated: 1511551749
->>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
+timeCreated: 1511631837
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Boat_Fishing-sheet_0
+    21300002: Boat_Fishing-sheet_1
+    21300004: Boat_Fishing-sheet_2
+    21300006: Boat_Fishing-sheet_3
+    21300008: Boat_Fishing-sheet_4
+    21300010: Boat_Fishing-sheet_5
+    21300012: Boat_Fishing-sheet_6
+    21300014: Boat_Fishing-sheet_7
+    21300016: Boat_Fishing-sheet_8
+    21300018: Boat_Fishing-sheet_9
+    21300020: Boat_Fishing-sheet_10
+    21300022: Boat_Fishing-sheet_11
+    21300024: Boat_Fishing-sheet_12
+    21300026: Boat_Fishing-sheet_13
+    21300028: Boat_Fishing-sheet_14
+    21300030: Boat_Fishing-sheet_15
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -39,17 +50,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-<<<<<<< HEAD
   spritePixelsToUnits: 1
-=======
-  spritePixelsToUnits: 100
->>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -67,16 +74,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
   - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: iPhone
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 1
@@ -92,19 +90,217 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-=======
->>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2358
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 3144
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 3537
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 3930
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 4323
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 4716
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 5109
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 5502
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Fishing-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 5895
+        y: 0
+        width: 393
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

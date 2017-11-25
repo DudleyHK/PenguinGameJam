@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class NetManager : MonoBehaviour
 {
-
     public bool startFishing = false;
     public enum NetStates
     {
         Off,
-        ReelIn,
         ReelOut,
+        ReelIn,
         Catching
     }
     public NetStates netStates = NetStates.Off;
@@ -43,6 +42,14 @@ public class NetManager : MonoBehaviour
 
     private void Update()
     {
+        ManageNetStates();
+    }
+
+
+
+
+    private void ManageNetStates()
+    {
         switch(netStates)
         {
             case NetStates.Off:
@@ -56,12 +63,17 @@ public class NetManager : MonoBehaviour
                     net.transform.position = new Vector2(xStart, net.transform.position.y);
 
                     net.SetActive(true);
-                    startFishing = false;
                 }
                 else
                 {
+                    // Do this here so it only does it once before the startFishing flag is turned off.
+                    if(startFishing)
+                    {
+                        netAnimator.SetInteger("AnimState", 0);
+                    }
+                    // This has to come after this if statment.
                     net.SetActive(false);
-                    netAnimator.SetInteger("AnimState", 0);
+                    startFishing = false;
                 }
 
                 break;
@@ -111,14 +123,11 @@ public class NetManager : MonoBehaviour
                 }
                 else
                 {
-                    netAnimator.SetInteger("AnimState", 2);
                     netStates = NetStates.ReelIn;
+                    netAnimator.SetInteger("AnimState", 2);
                     randTimeSelected = true;
                     randTimer = 0f;
                 }
-                break;
-
-            default:
                 break;
         }
     }
@@ -166,23 +175,5 @@ public class NetManager : MonoBehaviour
         }
     }
 
-    private void ReelInPhysics()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(net.transform.position.x, net.transform.position.y), netCollider2D.radius);
-        foreach(var col in colliders)
-        {
-            if(col.gameObject == net)
-                continue;
 
-            if(pullTags.Contains(col.tag))
-            {
-                ReelInPhysics(col);
-            }
-        }
-    }
-    private void ReelInPhysics(Collider2D col)
-    {
-        Debug.Log("Moving collider " + col.tag);
-        col.transform.position = Vector2.MoveTowards(col.transform.position, new Vector2(net.transform.position.x, net.transform.position.y), centreStick * Time.deltaTime);
-    }
 }

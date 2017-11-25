@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 1c0b79d3f89e78a46826f6cfdb469e4f
-timeCreated: 1511552268
-=======
 guid: 7e61ef230594e314696a218bd678506f
-timeCreated: 1511551750
->>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
+timeCreated: 1511632004
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Boat_Stationary_Net-sheet_0
+    21300002: Boat_Stationary_Net-sheet_1
+    21300004: Boat_Stationary_Net-sheet_2
+    21300006: Boat_Stationary_Net-sheet_3
+    21300008: Boat_Stationary_Net-sheet_4
+    21300010: Boat_Stationary_Net-sheet_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -39,21 +40,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
   spritePixelsToUnits: 1
-=======
-<<<<<<< HEAD
-  spritePixelsToUnits: 1
-=======
-  spritePixelsToUnits: 100
->>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
->>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -71,10 +64,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
-=======
-<<<<<<< HEAD
->>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -83,17 +72,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
-=======
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
->>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
@@ -102,22 +80,87 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
-=======
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-=======
->>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
->>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Boat_Stationary_Net-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 394
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Stationary_Net-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 0
+        width: 395
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Stationary_Net-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 0
+        width: 396
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Stationary_Net-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 0
+        width: 396
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Stationary_Net-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 0
+        width: 395
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Boat_Stationary_Net-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1964
+        y: 0
+        width: 394
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
