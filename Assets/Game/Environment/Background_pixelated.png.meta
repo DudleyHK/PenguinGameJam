@@ -66,6 +66,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
+=======
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+>>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c
   - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
@@ -74,6 +85,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
+=======
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+>>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c
   spriteSheet:
     serializedVersion: 2
     sprites: []

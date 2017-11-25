@@ -107,6 +107,7 @@ public class OxygenHungerHandler : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         data = player.GetComponent<PlayerData>();
     }
+
     void setDefaultValues()
     {
         if (oxygenIncrement < 0.1)

@@ -1,9 +1,17 @@
 fileFormatVersion: 2
-guid: 295b42295c75f12449c0ea1ec64c5d7d
-timeCreated: 1511539562
+guid: 0d47cecfaf261f24787ac17a250095d7
+timeCreated: 1511567810
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Penguin_Walking-sheet_0
+    21300002: Penguin_Walking-sheet_1
+    21300004: Penguin_Walking-sheet_2
+    21300006: Penguin_Walking-sheet_3
+    21300008: Penguin_Walking-sheet_4
+    21300010: Penguin_Walking-sheet_5
+    21300012: Penguin_Walking-sheet_6
+    21300014: Penguin_Walking-sheet_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +66,121 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 171
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 3
+        width: 155
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 8
+        width: 140
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 3
+        width: 135
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 0
+        width: 145
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 3
+        width: 135
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 8
+        width: 140
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Penguin_Walking-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 3
+        width: 155
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

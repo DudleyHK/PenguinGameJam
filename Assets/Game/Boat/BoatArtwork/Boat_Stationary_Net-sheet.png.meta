@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 1c0b79d3f89e78a46826f6cfdb469e4f
+timeCreated: 1511552268
+=======
 guid: 7e61ef230594e314696a218bd678506f
 timeCreated: 1511551750
+>>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -40,7 +45,15 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
   spritePixelsToUnits: 1
+=======
+<<<<<<< HEAD
+  spritePixelsToUnits: 1
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
+>>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -58,6 +71,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
+=======
+<<<<<<< HEAD
+>>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -66,6 +83,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
+=======
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+>>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
@@ -74,6 +102,19 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD:Assets/Game/Boat/BoatArtwork/Boat_Stationary_Net-sheet.png.meta
+=======
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+=======
+>>>>>>> 2e0fe92660ff860b0b893c23406df8893ce260be
+>>>>>>> 5d89c1f4d61c4eb2b4759e5ee35ff3ff85c0bf7c:Assets/Game/Boat/Boat_Stationary_Net-sheet.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
