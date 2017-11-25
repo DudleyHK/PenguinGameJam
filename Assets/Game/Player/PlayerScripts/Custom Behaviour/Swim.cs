@@ -36,9 +36,8 @@ public class Swim : Fly
     /// </summary>
     private void HasSurfaced()
     {
-        
         // Is the player above the water?
-        if (transform.position.y >= Water.waterOrigin.y + (water.transform.lossyScale.y / 2f))
+        if (Water.AboveWater(transform.position))
         {
           // Debug.Log("Player out or at top of water.");
 
@@ -46,7 +45,6 @@ public class Swim : Fly
             {
                 // check which lane the player is in. 
                 var laneNumber = iceburgManager.GetLane(transform.position);
-                //Debug.Log("Lane number is " + laneNumber);
 
                 // is there a iceburg in that lane?
                 var targetNode = iceburgManager.GetIceburgJumpNode(laneNumber);
