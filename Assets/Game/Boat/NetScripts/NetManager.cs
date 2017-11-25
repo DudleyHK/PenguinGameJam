@@ -5,6 +5,7 @@ using UnityEngine;
 public class NetManager : MonoBehaviour
 {
 
+    public bool startFishing = false;
     public enum NetStates
     {
         Off,
@@ -12,26 +13,31 @@ public class NetManager : MonoBehaviour
         ReelOut,
         Catching
     }
-    public bool startFishing = false;
     public NetStates netStates = NetStates.Off;
     public GameObject net;
-    public Rigidbody2D netBody2D;
     public List<string> pullTags = new List<string>();
     public float dropDistance = -150f;
     public float speed = 5f;
     public float distanceBreak = 0.5f;
     public float radiusOfEffect = 5f;
     public float pullForce = 9.8f;
+    public int centreStick = 50;
     public float minCatchTime = 5f;
     public float maxCatchTime = 15f;
     public float randTimer = 0f;
     public bool randTimeSelected = false;
 
+    private Rigidbody2D netBody2D;
+    private CircleCollider2D netCollider2D;
+    private Animator netAnimator;
 
 
     private void Start()
     {
         net.SetActive(false);
+        netBody2D = net.GetComponent<Rigidbody2D>();
+        netCollider2D = net.GetComponent<CircleCollider2D>();
+        netAnimator = net.GetComponent<Animator>();
     }
 
 
@@ -55,6 +61,7 @@ public class NetManager : MonoBehaviour
                 else
                 {
                     net.SetActive(false);
+                    netAnimator.SetInteger("AnimState", 0);
                 }
 
                 break;
@@ -65,6 +72,7 @@ public class NetManager : MonoBehaviour
                 if((Mathf.Abs(dropDistance - net.transform.position.y)) <= distanceBreak)
                 {
                     netStates = NetStates.Catching;
+                    netAnimator.SetInteger("AnimState", 1);
                 }
 
                 break;
@@ -77,6 +85,8 @@ public class NetManager : MonoBehaviour
                 {
                     netStates = NetStates.Off;
                 }
+
+                CatchPhysics(50, netCollider2D.radius);
                 break;
 
 
@@ -91,7 +101,7 @@ public class NetManager : MonoBehaviour
 
 
                 // start appling catching physics.
-                CatchPhysics();
+                CatchPhysics(1, radiusOfEffect);
 
 
                 // Decrement the timer.
@@ -101,6 +111,7 @@ public class NetManager : MonoBehaviour
                 }
                 else
                 {
+                    netAnimator.SetInteger("AnimState", 2);
                     netStates = NetStates.ReelIn;
                     randTimeSelected = true;
                     randTimer = 0f;
@@ -112,10 +123,10 @@ public class NetManager : MonoBehaviour
         }
     }
 
-    private void CatchPhysics()
+    private void CatchPhysics(int pullSpeed, float radius)
     {
         // Get all the objects in range
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(net.transform.position.x, net.transform.position.y), radiusOfEffect);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(net.transform.position.x, net.transform.position.y), radius);
 
 
         foreach(var col in colliders)
@@ -134,15 +145,44 @@ public class NetManager : MonoBehaviour
                 float distance = heading.magnitude;
                 Vector2 direction = heading / distance;
 
-                Debug.Log("Direction from " + col.name + " to the net is " + direction);
-                Debug.DrawRay(net.transform.position, direction, Color.green);
+                if(distance <= 5f)
+                {
+                    // Inside
+                    col.transform.position = Vector2.MoveTowards(col.transform.position, new Vector2(net.transform.position.x, net.transform.position.y), centreStick * Time.deltaTime);
 
-                var distPull = (pullForce / distance);
-                // Debug.Log("Distance between is " + distance);
-                // Debug.Log("Distance Pull factor is " + distPull);
+                }
+                else
+                {
+                    Debug.Log("Direction from " + col.name + " to the net is " + direction);
+                    Debug.DrawRay(net.transform.position, direction, Color.green);
 
-                col.attachedRigidbody.velocity += direction * distPull * Time.deltaTime;
+                    var distPull = (pullForce / distance);
+                    Debug.Log("Distance between is " + distance);
+                    Debug.Log("Distance Pull factor is " + distPull);
+
+                    col.attachedRigidbody.velocity += direction * distPull * Time.deltaTime;
+                }
             }
         }
+    }
+
+    private void ReelInPhysics()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(net.transform.position.x, net.transform.position.y), netCollider2D.radius);
+        foreach(var col in colliders)
+        {
+            if(col.gameObject == net)
+                continue;
+
+            if(pullTags.Contains(col.tag))
+            {
+                ReelInPhysics(col);
+            }
+        }
+    }
+    private void ReelInPhysics(Collider2D col)
+    {
+        Debug.Log("Moving collider " + col.tag);
+        col.transform.position = Vector2.MoveTowards(col.transform.position, new Vector2(net.transform.position.x, net.transform.position.y), centreStick * Time.deltaTime);
     }
 }
