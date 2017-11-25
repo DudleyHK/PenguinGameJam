@@ -6,16 +6,9 @@ using UnityEngine;
 
 public class BoatManager : MonoBehaviour 
 {
-    public enum BoatStates
-    {
-        Idle = 0,
-        ReelOut = 1,
-        ReelIn = 2,
-        Catching = 3
-    }
-    public BoatStates boatStates = BoatStates.Idle;
     public NetManager netManager;
     public Animator boatAnimator;
+    public Fade fade;
 
     public int animationKey = 0; // this is used to keep a track of the last used state.
     public float minWaitTime = 5f;
@@ -44,41 +37,39 @@ public class BoatManager : MonoBehaviour
             // If the previous fishing session has finished
             if(netManager.netStates == NetManager.NetStates.Off)
             {
+                fade.fadeState = Fade.FadeState.FadeIn;
                 netManager.startFishing = true;
             }
-
+            else
+            {
+                netManager.startFishing = false;
+            }
             // Select a new wait time. 
             randTimer = Random.Range(minWaitTime, maxWaitTime);
         }
-    }
 
-
-    public void SetBoatAnimation()
-    {
-        switch(boatStates)
+        if(netManager.netStates == NetManager.NetStates.ReelIn)
         {
-            case BoatStates.Idle:
-                boatStates = BoatStates.ReelOut;
-                break;
-
-            case BoatStates.ReelOut:
-                boatStates = BoatStates.Catching;
-                break;
-
-            case BoatStates.ReelIn:
-                boatStates = BoatStates.Idle;
-                break;
-
-            case BoatStates.Catching:
-                boatStates = BoatStates.ReelIn;
-                break;
+            fade.fadeState = Fade.FadeState.FadeOut;
         }
-        boatAnimator.SetInteger("AnimState", (int)boatStates);
+
+
+
+        // Animation stuff
+        boatAnimator.SetBool("ReelOut", false);
+        boatAnimator.SetBool("ReelIn",  false);
+        boatAnimator.SetBool("Catching",false);
+        if(netManager.netStates == NetManager.NetStates.ReelOut)
+        {
+            boatAnimator.SetBool("ReelOut", true);
+        }
+        else if(netManager.netStates == NetManager.NetStates.ReelIn)
+        {
+            boatAnimator.SetBool("ReelIn", true);
+        }
+        else if(netManager.netStates == NetManager.NetStates.Catching)
+        {
+            boatAnimator.SetBool("Catching", true);
+        }
     }
-
-
-
-
-
-
 }

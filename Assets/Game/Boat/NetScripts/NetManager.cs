@@ -73,7 +73,7 @@ public class NetManager : MonoBehaviour
                     }
                     // This has to come after this if statment.
                     net.SetActive(false);
-                    startFishing = false;
+                    
                 }
 
                 break;
@@ -125,6 +125,7 @@ public class NetManager : MonoBehaviour
                 {
                     netStates = NetStates.ReelIn;
                     netAnimator.SetInteger("AnimState", 2);
+                    startFishing = false;
                     randTimeSelected = true;
                     randTimer = 0f;
                 }
