@@ -2,32 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillerSeal : MonoBehaviour {
+public class SilentKiller : MonoBehaviour
+{
 
     public int rand;
     public float speed;
     public float dist;
     public List<Transform> points;
     public SpriteRenderer fSprite;
-    public GameObject silentKilla;
 
     bool newTarget;
     bool playerDetected = false;
     float smoothTime = 1.0f;
     float fraction = 0;
-    Vector3 vel = new Vector3(10.0f,10.0f,10.0f);
+    Vector3 vel = new Vector3(10.0f, 10.0f, 10.0f);
     GameObject player;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         speed = 0.5f;
         newTarget = true;
         player = GameObject.FindGameObjectWithTag("Player");
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (!playerDetected)
         {
@@ -75,33 +77,38 @@ public class KillerSeal : MonoBehaviour {
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        smoothTime = 1.0f * Time.deltaTime;
         //float step = speed * Time.deltaTime;
         Vector3 targetPos = player.transform.TransformPoint(new Vector3(0, 0, 0));
-        this.transform.position = Vector3.Lerp(this.transform.position, targetPos, smoothTime);
+        this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref vel, smoothTime);
     }
 
     void MoveToTarget()
     {
-        smoothTime = 1.0f;
+        if (newTarget)
+        {
+            rand = Random.Range(0, 8);
+            newTarget = false;
+            //StartCoroutine(Delay());
+        }
+
         //if this position x > target position = going right & undo Y sprite flip
-        if (this.transform.position.x > silentKilla.transform.position.x)
+        if (this.transform.position.x > points[rand].transform.position.x)
         {
             fSprite.flipY = true;
         }
         //if this position x < target position = going left & apply Y sprite flip
-        else if (this.transform.position.x < silentKilla.transform.position.x)
+        else if (this.transform.position.x < points[rand].transform.position.x)
         {
             fSprite.flipY = false;
         }
 
         //Get direction of player and look at it
-        Vector2 dir = silentKilla.transform.position - this.transform.position;
+        Vector2 dir = points[rand].transform.position - this.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         //float step = speed * Time.deltaTime;
-        Vector3 targetPos = silentKilla.transform.TransformPoint(new Vector3(0, 0, 0));
+        Vector3 targetPos = points[rand].TransformPoint(new Vector3(0, 0, 0));
         this.transform.position = Vector3.SmoothDamp(this.transform.position, targetPos, ref vel, smoothTime);
 
         dist = Vector2.Distance(this.transform.position, targetPos);
