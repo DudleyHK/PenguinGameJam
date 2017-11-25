@@ -6,37 +6,58 @@ public class PlayerAdding : MonoBehaviour {
 
     public int thisIndex;
 
-    public bool ControllerActive;
+    public bool ControllerActive, lockedIn;
 
-    public SpriteRenderer penguin;
+    public Animator pengAnim;
 
 
     // Use this for initialization
-    void Start () {
-        penguin.enabled = false;	
+    void Start ()
+    {
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (ControllerActive)
+        if (ControllerActive && !lockedIn)
+        {
+            if (Input.GetButtonUp("Controller " + thisIndex + " - A"))
+            {
+                lockedIn = true;
+                pengAnim.SetTrigger("startWalking");
+            }
+        }
+
+        if (ControllerActive && !lockedIn)
         {
             if (Input.GetButtonUp("Controller "+ thisIndex +" - B"))
             {
                 ControllerActive = false;
-                penguin.enabled = false;
+                pengAnim.SetTrigger("unJoined");
             }
 
         }
 
-        if (!ControllerActive)
+        if (!ControllerActive && !lockedIn)
         {
             if (Input.GetButtonUp("Controller " + thisIndex + " - A"))
             {
                 ControllerActive = true;
-                penguin.enabled = true;
+                pengAnim.SetTrigger("joined");
             }
 
+        }
+
+
+
+        if(lockedIn)
+        {
+            if (Input.GetButtonUp("Controller " + thisIndex + " - B"))
+            {
+                lockedIn = false;
+                pengAnim.SetTrigger("startWaiting");
+            }
         }
 
 
