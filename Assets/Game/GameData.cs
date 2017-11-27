@@ -64,4 +64,16 @@ public class GameData : MonoBehaviour {
             fishCap = value;
         }
     }
+
+    public static float KillerWhaleTmer
+    {
+        get
+        {
+            return killerWhaleTimer;
+        }
+        set
+        {
+            killerWhaleTimer = value;
+        }
+    }
 }
