@@ -82,6 +82,8 @@ public class OxygenHungerHandler : MonoBehaviour
         if (other.tag == "Fish")
         {
             Destroy(other.gameObject);
+            GameData.FishSpawnedCount--;
+            data.FishConsumed++;
             if (data.HungerLevel < data.MaxHunger)
             {
                 data.HungerLevel += hungerIncrement;
@@ -104,7 +106,7 @@ public class OxygenHungerHandler : MonoBehaviour
 
     void getPlayer()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = this.gameObject;
         data = player.GetComponent<PlayerData>();
     }
 

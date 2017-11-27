@@ -24,7 +24,7 @@ public class FishSpawner : MonoBehaviour {
 
     // Update is called once per frame
     public void Update() {
-        if (Time.time > nextSpawn)
+        if (Time.time > nextSpawn && GameData.FishSpawnedCount < GameData.FishCap)
         {
 			leftSpawn = (Random.value > 0.5f);
             randY = Random.Range(minY, maxY);
@@ -49,6 +49,7 @@ public class FishSpawner : MonoBehaviour {
                 fishObject.setFishSpeed(randomFishSpeed);
                // Debug.Log("spawing fish on the right.");
             }
+            GameData.FishSpawnedCount++;
         }
 	}
 
