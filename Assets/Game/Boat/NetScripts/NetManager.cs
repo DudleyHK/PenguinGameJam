@@ -92,8 +92,8 @@ public class NetManager : MonoBehaviour
 
             case NetStates.ReelIn:
                 // Pull net in
-                net.transform.position = Vector2.MoveTowards(net.transform.position, new Vector2(net.transform.position.x, Water.waterTopCentre.y), speed * Time.deltaTime);
-                if((Mathf.Abs(Water.waterTopCentre.y - net.transform.position.y)) <= distanceBreak)
+                net.transform.position = Vector2.MoveTowards(net.transform.position, new Vector2(net.transform.position.x, Water.top), speed * Time.deltaTime);
+                if((Mathf.Abs(Water.top - net.transform.position.y)) <= distanceBreak)
                 {
                     netStates = NetStates.Off;
                 }
