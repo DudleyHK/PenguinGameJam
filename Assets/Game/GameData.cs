@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour {
 
-    float killerWhaleTimer = 0;
-    int bestPlayer = 0;
-    int fishCap = 0;
-    int currentFishSpawned = 0;
-    List<GameObject> players;
+    static float killerWhaleTimer = 0;
+    static int bestPlayer = 0;
+    static int fishCap = 0;
+    static int currentFishSpawned = 0;
+    static List<GameObject> players;
 
 	// Use this for initialization
 	void Start () {
@@ -23,4 +23,45 @@ public class GameData : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public static int BestPlayer()
+    {
+        int bestPlayersIndex = 0;
+        int bestHunger = 0;
+
+        foreach (GameObject player in players)
+        {
+            PlayerData data = player.GetComponent<PlayerData>();
+            if (data.FishConsumed > bestHunger)
+            {
+                bestHunger = data.FishConsumed;
+                bestPlayersIndex = data.PlayerIndex;
+            }
+        }
+        return bestPlayersIndex;
+    }
+
+    public static int FishSpawnedCount
+    {
+        get
+        {
+            return currentFishSpawned;
+        }
+        set
+        {
+            currentFishSpawned = value;
+        }
+    }
+
+    public static int FishCap
+    {
+        get
+        {
+            return fishCap;
+        }
+        set
+        {
+            fishCap = value;
+        }
+    }
 }

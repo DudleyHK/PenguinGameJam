@@ -22,6 +22,8 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     float maxHunger;
     [SerializeField]
+    int fishConsumed;
+    [SerializeField]
     float maxOxygen;
     [SerializeField]
     float mass;
@@ -120,6 +122,30 @@ public class PlayerData : MonoBehaviour
         set
         {
             inWater = value;
+        }
+    }
+
+    public int PlayerIndex
+    {
+        get
+        {
+            return playerIndex;
+        }
+        set
+        {
+            playerIndex = value;
+        }
+    }
+
+    public int FishConsumed
+    {
+        get
+        {
+            return fishConsumed;
+        }
+        set
+        {
+            fishConsumed = value;
         }
     }
 
