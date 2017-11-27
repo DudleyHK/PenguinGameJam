@@ -13,7 +13,6 @@ public class PlayerData : MonoBehaviour
         AIRBORN = 4
     }
 
-
     [SerializeField]
     PlayerStates playerState;
     [SerializeField]
@@ -28,6 +27,8 @@ public class PlayerData : MonoBehaviour
     float mass;
     [SerializeField]
     bool inWater;
+    [SerializeField]
+    int playerIndex;
 
     /*public PlayerData(PlayerState _PlayerState, float _OxygenLevel, float _HungerLevel, float _Mass)
     {
