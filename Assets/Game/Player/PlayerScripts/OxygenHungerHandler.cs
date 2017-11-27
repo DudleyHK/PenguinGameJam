@@ -17,9 +17,9 @@ public class OxygenHungerHandler : MonoBehaviour
     float hungerIncrement;
 
     [SerializeField]
-    public GameObject oxygenSprite;
+    GameObject oxygenSprite;
     [SerializeField]
-    public GameObject oxygenSpriteFill;
+    GameObject oxygenSpriteFill;
 
     [SerializeField]
     public GameObject hungerSprite;
