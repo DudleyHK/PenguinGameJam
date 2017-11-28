@@ -9,10 +9,19 @@ public class CameraManager : MonoBehaviour
     public GameObject player;
     public float acceleration = 0.1f;
     public Camera cam;
+    public int camIndex;
 
 
     private void Start()
     {
+        foreach(var possiblePlayer in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if(possiblePlayer.GetComponent<PlayerData>().PlayerIndex == camIndex)
+            {
+                player = possiblePlayer;
+            }
+        }
+
         if(!player)
         {
             var playerTag = GameObject.FindGameObjectWithTag("Player");
@@ -27,6 +36,67 @@ public class CameraManager : MonoBehaviour
         }
 
         cam = GetComponent<Camera>();
+
+
+        if(GameObject.FindGameObjectsWithTag("Player").Length == 4 )
+        {
+            switch (camIndex)
+            {
+                case 1:
+                    cam.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                    break;
+                case 2:
+                    cam.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                    break;
+                case 3:
+                    cam.rect = new Rect(0, 0, 0.5f, 0.5f);
+                    break;
+                case 4:
+                    cam.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                    break;
+            }
+        }
+
+        else if(GameObject.FindGameObjectsWithTag("Player").Length == 3)
+        {
+            switch (camIndex)
+            {
+                case 1:
+                    cam.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                    break;
+                case 2:
+                    cam.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                    break;
+                case 3:
+                    cam.rect = new Rect(0, 0, 1, 0.5f);
+                    break;
+                case 4:
+                    cam.rect = new Rect(0.5f, 0, 0.0f, 0.0f);
+                    break;
+            }
+        }
+
+        else if (GameObject.FindGameObjectsWithTag("Player").Length == 2)
+        {
+            switch (camIndex)
+            {
+                case 1:
+                    cam.rect = new Rect(0, 0, 0.5f, 1);
+                    break;
+                case 2:
+                    cam.rect = new Rect(0.5f, 0, 0.5f, 1);
+                    break;
+                case 3:
+                    cam.rect = new Rect(0, 0, 0, 0);
+                    break;
+                case 4:
+                    cam.rect = new Rect(0.5f, 0, 0.0f, 0.0f);
+                    break;
+            }
+        }
+
+
+
     }
 
     private void FixedUpdate()
