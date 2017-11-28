@@ -81,16 +81,16 @@ public class CameraManager : MonoBehaviour
             switch (camIndex)
             {
                 case 1:
-                    cam.rect = new Rect(0, 0, 0.5f, 1);
+                    cam.rect = new Rect(0, 0.5f, 1.0f, 0.5f);
                     break;
                 case 2:
-                    cam.rect = new Rect(0.5f, 0, 0.5f, 1);
+                    cam.rect = new Rect(0.0f, 0, 1.0f, 0.5f);
                     break;
                 case 3:
                     cam.rect = new Rect(0, 0, 0, 0);
                     break;
                 case 4:
-                    cam.rect = new Rect(0.5f, 0, 0.0f, 0.0f);
+                    cam.rect = new Rect(0.0f, 0, 0.0f, 0.0f);
                     break;
             }
         }
