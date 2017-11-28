@@ -5,8 +5,6 @@ using UnityEngine;
 
 class FaceDirection : AbstractBehaviour
 {
-
-
     private void Update()
     {
         var right = inputState.GetButtonValue(inputButtons[0]);
