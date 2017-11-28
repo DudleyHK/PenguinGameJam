@@ -62,7 +62,7 @@ public class Water : MonoBehaviour
     /// <returns></returns>
     public static bool AboveWater(Vector2 position)
     {
-        if(position.y >= waterOrigin.y + (waterTransform.lossyScale.y / 2f))
+        if(position.y >= top)
         {
             return true;
         }
