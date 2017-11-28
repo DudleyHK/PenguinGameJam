@@ -29,11 +29,11 @@ public class FishSpawner : MonoBehaviour {
         {
 			leftSpawn = (Random.value > 0.5f);
             
-            randY = Random.Range(Water.top + 50, Water.down - 50);
+            randY = Random.Range(Water.top - 100, Water.down + 100);
             int randomFishSpeed = Random.Range(12, 60);
 			if (leftSpawn == true) {
 				nextSpawn = Time.time + spawnFishRate;
-				spawnLocation = new Vector3(Water.left, randY, -2);
+				spawnLocation = new Vector3(Water.left + 75, randY, -2);
                 GameObject instancedFish = (GameObject)Instantiate(generateFish(), spawnLocation, Quaternion.identity);
                 fishObject = instancedFish.GetComponent<Fish>();
                 fishObject.setDirectionLeft(true);
@@ -43,7 +43,7 @@ public class FishSpawner : MonoBehaviour {
 
             else if (leftSpawn == false) {
 				nextSpawn = Time.time + spawnFishRate;
-                spawnLocation = new Vector3(Water.right, randY, -2);
+                spawnLocation = new Vector3(Water.right - 75, randY, -2);
                 GameObject instancedFish = (GameObject)Instantiate(generateFish(), spawnLocation, Quaternion.Euler(180.0f, 0.0f, 180.0f));
                 fishObject = instancedFish.GetComponent<Fish>();
                 fishObject.setDirectionLeft(false);
@@ -58,7 +58,7 @@ public class FishSpawner : MonoBehaviour {
     {
         GameObject generatedFish = null;
         float random = 0;
-        if (randY < 200)
+        if (randY < -1200)
         { 
             random = Random.Range(0, 6);
             if(random > 4)
@@ -66,18 +66,18 @@ public class FishSpawner : MonoBehaviour {
             else
                 generatedFish = fish;
         }
-        else if (randY > 200 && randY < 700)
+        else if (randY >= -1200 && randY < -700)
         {
             random = Random.Range(0, 10);
-            if (random > 6)
+            if (random > 7)
                 generatedFish = shrimp;
             else
                 generatedFish = fish;
         }
-        else if (randY >= 700)
+        else
         {
             random = Random.Range(0, 10);
-            if (random > 6)
+            if (random > 5)
                 generatedFish = fish;
             else
                 generatedFish = shrimp;

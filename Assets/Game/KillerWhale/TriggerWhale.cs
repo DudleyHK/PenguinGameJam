@@ -8,12 +8,20 @@ public class TriggerWhale : MonoBehaviour {
     public SpriteRenderer whale;
     public List<Transform> attackPoints;
 
-    KillerSeal killa;
+    private KillerSeal killa;
     bool attack;
+    bool idle;
+
     float ratio = 0.0f;
     int rand;
 
-	void Start () {
+    public float dist;
+    float smoothTime = 1.0f;
+    Vector3 vel = new Vector3(5.0f, 5.0f, 5.0f);
+
+    void Start () {
+        killa = FindObjectOfType<KillerSeal>();
+        idle = false;
         attack = false;
         tmp = whale.GetComponent<SpriteRenderer>().color;
         whale.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -32,17 +40,43 @@ public class TriggerWhale : MonoBehaviour {
         }
         else if (tmp.a >= 0.9)
         {
-            ratio = 0;
-            // GO TO ATTACK POINT
             if (!attack)
             {
-                Debug.Log("Attack");
+                ratio = 0;
 
-                attack = true;
-                rand = Random.Range(0, 4);
-                whale.transform.position = attackPoints[rand].position;
+                if (!idle)
+                {
+                    rand = Random.Range(0, 2);
+                    killa.setIdle(true);
+                    idle = true;
+                }
 
-                killa.setAttacking(true);
+                Vector2 dir = attackPoints[rand].transform.position - whale.transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                whale.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                //float step = speed * Time.deltaTime;
+                Vector3 targetPos = attackPoints[rand].TransformPoint(new Vector3(0, 0, 0));
+                whale.transform.position = Vector3.SmoothDamp(whale.transform.position, targetPos, ref vel, smoothTime);
+
+                if (whale.transform.position.x > attackPoints[rand].transform.position.x)
+                {
+                    whale.flipY = true;
+                }
+                //if this position x < target position = going left & apply Y sprite flip
+                else if (whale.transform.position.x < attackPoints[rand].transform.position.x)
+                {
+                    whale.flipY = false;
+                }
+
+                //whale.transform.position = attackPoints[rand].position;
+                dist = Vector2.Distance(whale.transform.position, targetPos);
+                if (dist < 250.0f)
+                {
+                    Debug.Log("RAWR");
+                    attack = true;
+                    killa.setAttacking(true);
+                }
             }
         }
         else
@@ -58,7 +92,7 @@ public class TriggerWhale : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -72,5 +106,14 @@ public class TriggerWhale : MonoBehaviour {
         {
             ratio = -0.1f;
         }
+    }
+
+    public void resetWhale()
+    {
+        //killa = FindObjectOfType<KillerSeal>();
+        idle = false;
+        attack = false;
+        tmp = new Color(0.28f, 0.28f, 0.28f, 0.2f);
+        whale.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
     }
 }

@@ -26,7 +26,7 @@ public class IceburgFloating : MonoBehaviour {
         if(this.transform.localScale.x > 0)
         {
             this.transform.localScale = new Vector3(this.transform.localScale.x - meltedAmount, this.transform.localScale.y, this.transform.localScale.z);
-            meltedAmount += 0.01f * Time.deltaTime;
+            meltedAmount += 0.00001f * Time.deltaTime;
         }
         else
         {
