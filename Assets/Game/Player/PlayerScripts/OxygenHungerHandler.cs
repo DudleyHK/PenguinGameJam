@@ -64,6 +64,7 @@ public class OxygenHungerHandler : MonoBehaviour
         }
             else
         {
+			//drown sound plays when a player 
 			StartCoroutine(data.PlayNext(data.drowningSound));
             bubble.SetActive(true);
             bubbleFill.SetActive(true);
@@ -75,7 +76,8 @@ public class OxygenHungerHandler : MonoBehaviour
             hungerFill.SetActive(false);
         }
         else
-        {
+		{
+			//still need a starving sound bite StartCoroutine(data.PlayNext(data.starvingSound));
             hunger.SetActive(true);
             hungerFill.SetActive(true);
         }
@@ -86,6 +88,8 @@ public class OxygenHungerHandler : MonoBehaviour
             if (data.OxygenLevel < 0)
             {
                 data.OxygenLevel = 0;
+				// or do we want drown sound to happen when you die?
+
             }
         }
         else if (!data.InWater && data.OxygenLevel < data.MaxOxygen)
