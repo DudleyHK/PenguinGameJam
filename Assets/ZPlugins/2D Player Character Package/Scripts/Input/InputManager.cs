@@ -9,21 +9,31 @@ public class InputManager : MonoBehaviour
     public InputState inputState;
     public string playerTag = "Player";
 
+    public int controllerID;
+
     private void Start()
     {
-        if(!inputState)
+        foreach(var player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            Debug.Log("InputManager players Inputstate not set.");
-            var player = GameObject.FindGameObjectWithTag(playerTag);
-            if(player)
+            if(player.GetComponent<PlayerData>().PlayerIndex == controllerID)
             {
                 inputState = player.GetComponent<InputState>();
             }
-            else
-            {
-                print("ERROR: Player tag not applied");
-            }
         }
+
+        //if (!inputstate)
+        //{
+        //    debug.log("inputmanager players inputstate not set.");
+        //    var player = gameobject.findgameobjectwithtag(playertag);
+        //    if (player)
+        //    {
+        //        inputstate = player.getcomponent<inputstate>();
+        //    }
+        //    else
+        //    {
+        //        print("error: player tag not applied");
+        //    }
+        //}
     }
 
     void Update () 

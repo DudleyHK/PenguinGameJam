@@ -17,7 +17,7 @@ public class TriggerWhale : MonoBehaviour {
 
     public float dist;
     float smoothTime = 1.0f;
-    Vector3 vel = new Vector3(5.0f, 5.0f, 5.0f);
+    Vector3 vel = new Vector3(5.0f, 5.0f, 0);
 
     void Start () {
         killa = FindObjectOfType<KillerSeal>();

@@ -18,7 +18,7 @@ public class KillerSeal : MonoBehaviour {
     float smoothTime = 1.0f;
     float fraction = 0;
 
-    Vector3 vel = new Vector3(10.0f,10.0f,10.0f);
+    Vector3 vel = new Vector3(10.0f,10.0f, 0);
     Vector3 targetPos;
     GameObject player;
     TriggerWhale whaleTrigger;
@@ -35,7 +35,6 @@ public class KillerSeal : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         if (!attacking && !idle)
         {
             MoveToTarget();
