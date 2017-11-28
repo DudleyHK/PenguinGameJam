@@ -22,16 +22,27 @@ public class OxygenHungerHandler : MonoBehaviour
     GameObject oxygenSpriteFill;
 
     [SerializeField]
-    public GameObject hungerSprite;
+    GameObject hungerSprite;
     [SerializeField]
-    public GameObject hungerSpriteFill;
+    GameObject hungerSpriteFill;
 
+    private GameObject bubble;
+    private GameObject bubbleFill;
+
+    private GameObject hunger;
+    private GameObject hungerFill;
 
     // Use this for initialization
     void Start()
     {
         getPlayer();
         setDefaultValues();
+
+        bubble = Instantiate(oxygenSprite, Vector3.zero, Quaternion.identity, this.transform);
+        bubbleFill = Instantiate(oxygenSpriteFill, Vector3.zero, Quaternion.identity, this.transform);
+
+        hunger = Instantiate(hungerSprite, Vector3.zero, Quaternion.identity, this.transform);
+        hungerFill = Instantiate(hungerSpriteFill, Vector3.zero, Quaternion.identity, this.transform);
     }
 
     // Update is called once per frame
@@ -48,15 +59,25 @@ public class OxygenHungerHandler : MonoBehaviour
 
         if (data.OxygenLevel > data.MaxOxygen / 2)
         {
-            oxygenSprite.SetActive(false);
-            oxygenSpriteFill.SetActive(false);
+            bubble.SetActive(false);
+            bubbleFill.SetActive(false);
         }
             else
         {
-			//StartCoroutine (PlayNext (drowning));
 			StartCoroutine(data.PlayNext(data.drowningSound));
-            oxygenSprite.SetActive(true);
-            oxygenSpriteFill.SetActive(true);
+            bubble.SetActive(true);
+            bubbleFill.SetActive(true);
+        }
+
+        if (data.HungerLevel > data.MaxHunger / 2)
+        {
+            hunger.SetActive(false);
+            hungerFill.SetActive(false);
+        }
+        else
+        {
+            hunger.SetActive(true);
+            hungerFill.SetActive(true);
         }
 
         if (data.InWater)
@@ -117,11 +138,11 @@ public class OxygenHungerHandler : MonoBehaviour
     {
         if (oxygenIncrement < 0.1)
         {
-            oxygenIncrement = 25;
+            oxygenIncrement = 25f;
         }
         if (oxygenDecrement < 0.1)
         {
-            oxygenDecrement = 3;
+            oxygenDecrement = 1.0f;
         }
 
         if (hungerIncrement < 0.1)
@@ -130,14 +151,18 @@ public class OxygenHungerHandler : MonoBehaviour
         }
         if (hungerDecrement < 0.1)
         {
-            hungerDecrement = 0.5f;
+            hungerDecrement = 2.0f;
         }
     }
 
     void positionBubble()
     {
-        oxygenSprite.transform.position = player.transform.position - new Vector3(12.0f, -6.0f, 1.0f);
-        oxygenSpriteFill.transform.position = player.transform.position - new Vector3(12.0f, -6.0f, 0.0f);
-        oxygenSpriteFill.transform.localScale = new Vector3(oxygenSpriteFill.transform.localScale.x, data.OxygenLevel, oxygenSpriteFill.transform.localScale.z);
+        bubble.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 1.0f);
+        bubbleFill.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 0.0f);
+        bubbleFill.transform.localScale = new Vector3(bubbleFill.transform.localScale.x, data.OxygenLevel * 2, bubbleFill.transform.localScale.z);
+
+        hunger.transform.position = player.transform.position - new Vector3(18.0f, -26.0f, 0.0f);
+        hungerFill.transform.position = player.transform.position - new Vector3(18.0f, -26.0f, 1.0f);
+        hungerFill.transform.localScale = new Vector3(data.HungerLevel / 1.666666666666667f, hungerFill.transform.localScale.y, hungerFill.transform.localScale.z);
     }
 }
