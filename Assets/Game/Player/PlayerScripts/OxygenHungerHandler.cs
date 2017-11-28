@@ -64,6 +64,7 @@ public class OxygenHungerHandler : MonoBehaviour
         }
             else
         {
+			StartCoroutine(data.PlayNext(data.drowningSound));
             bubble.SetActive(true);
             bubbleFill.SetActive(true);
         }
@@ -102,7 +103,8 @@ public class OxygenHungerHandler : MonoBehaviour
         }
 
         if (other.tag == "Fish")
-        {
+		{
+			StartCoroutine(data.PlayNext(data.eatSound));
             Destroy(other.gameObject);
             GameData.FishSpawnedCount--;
             data.FishConsumed++;

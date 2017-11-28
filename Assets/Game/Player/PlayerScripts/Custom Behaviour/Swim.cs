@@ -27,8 +27,14 @@ public class Swim : Fly
     {
         base.Update();
 
-        if(playerData.PlayerState != PlayerData.PlayerStates.GROUNDED)
-            HasSurfaced();
+		if (playerData.PlayerState != PlayerData.PlayerStates.GROUNDED)
+		{
+			HasSurfaced ();
+		} 
+		else 
+		{
+			StartCoroutine(playerData.PlayNext(playerData.swimSound));
+		}
     }
 
     /// <summary>
