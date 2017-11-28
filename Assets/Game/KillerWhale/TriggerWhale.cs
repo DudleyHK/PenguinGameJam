@@ -101,7 +101,7 @@ public class TriggerWhale : MonoBehaviour {
 
     public void resetWhale()
     {
-        killa = FindObjectOfType<KillerSeal>();
+        //killa = FindObjectOfType<KillerSeal>();
         idle = false;
         attack = false;
         tmp = new Color(0.28f, 0.28f, 0.28f, 0.2f);
