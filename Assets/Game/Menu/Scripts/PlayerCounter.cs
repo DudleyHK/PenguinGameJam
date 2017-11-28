@@ -81,12 +81,12 @@ public class PlayerCounter : MonoBehaviour {
 
                     GameObject newIceburg;
                     newIceburg = (GameObject)Instantiate(iceBurg, 
-                                                        new Vector3(GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.x, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.y - 50, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.z),
+                                                        new Vector3(GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.x, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.y - 100, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.z),
                                                         GameObject.Find("PlayerSpawn" + player.thisIndex).transform.rotation);
 
                     //DontDestroyOnLoad(newPlayer.gameObject);
 
-
+                    GetComponent<GameData>().addIceberg(newIceburg);
 
                 }
             }

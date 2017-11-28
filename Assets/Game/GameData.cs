@@ -106,4 +106,9 @@ public class GameData : MonoBehaviour {
             isIcebergMelting = value;
         }
     }
+
+    public void addIceberg(GameObject iceberg)
+    {
+        icebergs.Add(iceberg);
+    }
 }
