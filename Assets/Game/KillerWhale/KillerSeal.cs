@@ -62,13 +62,13 @@ public class KillerSeal : MonoBehaviour {
             //float step = speed * Time.deltaTime;
             if (this.transform.position.x > player.transform.position.x)
             {
-                targetPos = player.transform.position - new Vector3(-400,0,0)/*TransformPoint(new Vector3(-200, 0, 0))*/;
+                targetPos = player.transform.position - new Vector3(400,0,0)/*TransformPoint(new Vector3(-200, 0, 0))*/;
                 fSprite.flipY = true;
             }
             //if this position x < target position = going left & apply Y sprite flip
             else if (this.transform.position.x < player.transform.position.x)
             {
-                targetPos = player.transform.position + new Vector3(+400,0,0);
+                targetPos = player.transform.position + new Vector3(400,0,0);
                 fSprite.flipY = false;
             }
             setPoint = true;
