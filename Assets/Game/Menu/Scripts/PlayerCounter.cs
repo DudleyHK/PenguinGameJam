@@ -79,10 +79,10 @@ public class PlayerCounter : MonoBehaviour {
                     newPlayer = (GameObject)Instantiate(penguin, GameObject.Find("PlayerSpawn" + player.thisIndex).transform);
                     newPlayer.GetComponent<PlayerData>().PlayerIndex = player.thisIndex;
 
-                    GameObject newIceburg;
-                    newIceburg = (GameObject)Instantiate(iceBurg,
-                                                        new Vector3(GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.x, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.y - 100, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.z),
-                                                        GameObject.Find("PlayerSpawn" + player.thisIndex).transform.rotation);
+                    //GameObject newIceburg;
+                    //newIceburg = (GameObject)Instantiate(iceBurg,
+                    //                                    new Vector3(GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.x, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.y - 100, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.z),
+                    //                                    GameObject.Find("PlayerSpawn" + player.thisIndex).transform.rotation);
 
                   
 
