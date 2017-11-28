@@ -16,6 +16,7 @@ public class CollisionState : MonoBehaviour
     public Collider2D collisionBox;
 	private InputState inputState;
     private KillerSeal killa;
+    public GameObject dead;
 
 
 	private void Awake () 
@@ -67,6 +68,7 @@ public class CollisionState : MonoBehaviour
             {
                 Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Destroy(gameObject);
+                Instantiate(dead, this.transform.position, this.transform.rotation);
             }
         }
     }
