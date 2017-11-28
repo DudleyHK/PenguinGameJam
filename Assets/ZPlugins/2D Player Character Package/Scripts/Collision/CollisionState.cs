@@ -15,13 +15,14 @@ public class CollisionState : MonoBehaviour
 
     public Collider2D collisionBox;
 	private InputState inputState;
-
+    private KillerSeal killa;
 
 
 	private void Awake () 
 	{
 		inputState = GetComponent<InputState> ();
         collisionBox = GetComponent<Collider2D>();
+        killa = FindObjectOfType<KillerSeal>();
 	}
 
 
@@ -57,4 +58,16 @@ public class CollisionState : MonoBehaviour
 			Gizmos.DrawWireSphere (pos, collisionRadius);
 		}
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "KillerWhale")
+        {
+            if (killa.returnAttacking())
+            {
+                Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Destroy(gameObject);
+            }
+        }
+    }
 }
