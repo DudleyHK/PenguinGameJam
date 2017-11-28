@@ -57,7 +57,6 @@ public class GameData : MonoBehaviour {
             isIcebergMelting = true;
             data.Melting = true;
         }
-        
     }
 
     public static int FishSpawnedCount
@@ -108,7 +107,7 @@ public class GameData : MonoBehaviour {
         }
     }
 
-    public void addIceberg(GameObject iceberg)
+    public static void addIceberg(GameObject iceberg)
     {
         icebergs.Add(iceberg);
     }
