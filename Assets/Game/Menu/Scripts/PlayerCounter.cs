@@ -62,18 +62,27 @@ public class PlayerCounter : MonoBehaviour {
         gameStarted = true;
 
         SceneManager.LoadScene(1);
-        
-        foreach(PlayerAdding player in possiblePlayers)
-        {
-            if(player.ControllerActive)
-            {
-                GameObject newPlayer;
-                newPlayer = (GameObject)Instantiate(penguin, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-                newPlayer.GetComponent<PlayerData>().PlayerIndex = player.thisIndex;
-                DontDestroyOnLoad(newPlayer.gameObject);
-            }
-        }
 
     }
+
+    void OnLevelWasLoaded(int level)
+    {
+        Debug.Log("Doing the thing");
+        if(level == 1)
+        {
+            Debug.Log("Doing the thing");
+            foreach (PlayerAdding player in possiblePlayers)
+            {
+                if (player.ControllerActive)
+                {
+                    GameObject newPlayer;
+                    newPlayer = (GameObject)Instantiate(penguin, GameObject.Find("PlayerSpawn" + player.thisIndex).transform);
+                    newPlayer.GetComponent<PlayerData>().PlayerIndex = player.thisIndex;
+                    //DontDestroyOnLoad(newPlayer.gameObject);
+                }
+            }
+        }
+    }
+
 
 }
