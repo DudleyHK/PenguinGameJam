@@ -57,6 +57,7 @@ public class PlayerData : MonoBehaviour
 
     void Start()
     {
+		audioSource = GameObject.Find("SFX Manager").GetComponent<AudioSource>();
         //playerState = PlayerStates.NONE;
         hungerLevel = 50.0f;
         oxygenLevel = 50.0f;
