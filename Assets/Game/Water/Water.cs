@@ -88,7 +88,7 @@ public class Water : MonoBehaviour
             var findObject = waterLayers[i].objectsInLayer.Find(p => { return p.tag == obj.tag; });
             if(findObject)
             {
-                Debug.Log("Object " + obj.tag + " is in layer " + i);
+                Debug.Log("Object " + obj.tag + " is in layer " + (i + 1));
                 return (i + 1);
             }
         }

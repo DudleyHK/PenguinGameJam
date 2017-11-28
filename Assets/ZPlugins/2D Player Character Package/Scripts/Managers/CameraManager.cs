@@ -42,27 +42,26 @@ public class CameraManager : MonoBehaviour
         var camRight = transform.position.x + (horizontalSize / 2f);
         var camDown  = transform.position.y - (verticalSize / 2f);
 
-       // print("Camera velocity is " + velocity);
+       // print("Cameras Y velocity is " + velocity.y);
+       // print("CamDown " + camDown + " <= " + Water.down + " is " + (camDown <= Water.down));
+
 
         if(camLeft <= Water.left && velocity.x < 0f)
         {
             velocity.x = 0f;
             //Debug.Log("Camera position locked to water left");
         }
-        else if(camRight >= Water.right && velocity.x > 0f)
+        if(camRight >= Water.right && velocity.x > 0f)
         {
             velocity.x = 0f;
             //Debug.Log("Camera position locked to water right");
         }
-        else if(camDown <= Water.down && velocity.y < 0f)
+        if(camDown <= Water.down && velocity.y < 0f)
         {
             velocity.y = 0f;
-            //Debug.Log("Camera position locked to water right");
+            //Debug.Log("Camera position locked to water down");
         }
-        else
-        {
-            // Do nothin'
-        }
+
         
         transform.Translate(velocity.x, velocity.y, 0);
     }

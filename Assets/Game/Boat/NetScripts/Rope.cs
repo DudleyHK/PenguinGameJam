@@ -4,32 +4,28 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    public BoatManager boatManager;
-    public NetManager netManager;
-    public LineRenderer line;
+    public BoatEvent boatEvent;
 
-   // public GameObject linePointTwo;
+    public GameObject linePointOne;
+    public GameObject linePointTwo;
     public GameObject linePointThree;
 
 
+    private void Start()
+    {
+        
+    }
 
 
     private void Update()
     {
-        if(boatManager.boatState == BoatManager.BoatState.Off)
-        {
-            //linePointTwo.transform.position = transform.position;
-            linePointThree.transform.position = transform.position;
-        }
-        else
-        {
-            var yPos = (netManager.net.transform.position.y + (netManager.netRenderer.bounds.size.y / 2f));
-            var xPos = netManager.net.transform.position.x;
+        // Update line pos three
+        var yPos = (boatEvent.net.transform.position.y + (boatEvent.netRenderer.bounds.size.y / 2f));
+        var xPos = boatEvent.net.transform.position.x;
 
-            linePointThree.transform.position = new Vector3(xPos, yPos, netManager.net.transform.position.z);
-            //linePointTwo.transform.position = transform.position + linePointThree.transform.position;
-            //Debug.Log("half way between line pint 1 and 3 is " + linePointTwo.transform.position);
+        linePointThree.transform.position = new Vector3(xPos, yPos, boatEvent.net.transform.position.z);
 
-        }
+        // linepoint2 position is somewhere between linethree and line1
+
     }
 }
