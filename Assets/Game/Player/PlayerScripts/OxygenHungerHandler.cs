@@ -53,6 +53,8 @@ public class OxygenHungerHandler : MonoBehaviour
         }
             else
         {
+			//StartCoroutine (PlayNext (drowning));
+			StartCoroutine(data.PlayNext(data.drowningSound));
             oxygenSprite.SetActive(true);
             oxygenSpriteFill.SetActive(true);
         }
@@ -80,7 +82,8 @@ public class OxygenHungerHandler : MonoBehaviour
         }
 
         if (other.tag == "Fish")
-        {
+		{
+			StartCoroutine(data.PlayNext(data.eatSound));
             Destroy(other.gameObject);
             GameData.FishSpawnedCount--;
             data.FishConsumed++;

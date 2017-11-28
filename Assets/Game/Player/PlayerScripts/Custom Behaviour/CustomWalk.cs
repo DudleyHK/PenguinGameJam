@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class CustomWalk : Walk
 {
+
+	public PlayerData playerData;
+
     protected override void Update()
     {
         running = false;
@@ -19,6 +22,7 @@ public class CustomWalk : Walk
 
             var velX = tempSpeed * (float)inputState.direction;
             body2D.velocity = new Vector2(velX, body2D.velocity.y);
+			StartCoroutine(playerData.PlayNext(playerData.walkSound));
         }
 
     }

@@ -32,6 +32,21 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     int playerIndex;
 
+
+	private AudioSource audioSource;
+	[SerializeField]
+	public AudioClip swimSound;
+	[SerializeField]
+	public AudioClip walkSound;
+	[SerializeField]
+	public AudioClip jumpSound;
+	[SerializeField]
+	public AudioClip drowningSound;
+	[SerializeField]
+	public AudioClip starvingSound;
+	[SerializeField]
+	public AudioClip eatSound;
+
     /*public PlayerData(PlayerState _PlayerState, float _OxygenLevel, float _HungerLevel, float _Mass)
     {
         playerState = _PlayerState;
@@ -150,4 +165,19 @@ public class PlayerData : MonoBehaviour
     }
 
 
+	public IEnumerator PlayNext(AudioClip clip)
+	{
+		float timer = 0f;
+		while (audioSource.isPlaying)
+		{
+			timer += Time.deltaTime;
+			yield return false;
+			if (timer > 3f)
+			{
+				yield return true;
+			}
+		}
+		audioSource.PlayOneShot (clip);
+		yield return true;
+	}
 }
