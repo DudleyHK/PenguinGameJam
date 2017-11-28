@@ -15,24 +15,30 @@ public class IceburgFloating : MonoBehaviour {
     [SerializeField]
     float angularVelocity, angularAcceleration, speedMultiplyer, slowDownSpeed;
 
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    bool melting;
+
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
 	
     void Update()
     {
-        if(this.transform.localScale.x > 0)
+        if(melting)
         {
-            this.transform.localScale = new Vector3(this.transform.localScale.x - meltedAmount, this.transform.localScale.y, this.transform.localScale.z);
-            meltedAmount += 0.00001f * Time.deltaTime;
+            if (this.transform.localScale.x > 0)
+            {
+                this.transform.localScale = new Vector3(this.transform.localScale.x - meltedAmount, this.transform.localScale.y, this.transform.localScale.z);
+                meltedAmount += 0.00001f * Time.deltaTime;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                GameData.IsIcebergMelting = false;
+            }
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        
     }
 
 	// Update is called once per frame
@@ -84,6 +90,18 @@ public class IceburgFloating : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         collidingPlayers.Add(col.gameObject);
+    }
+
+    public bool Melting
+    {
+        get
+        {
+            return melting;
+        }
+        set
+        {
+            melting = value;
+        }
     }
 
 
