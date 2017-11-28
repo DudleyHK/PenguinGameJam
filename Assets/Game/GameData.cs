@@ -11,7 +11,7 @@ public class GameData : MonoBehaviour {
     static List<GameObject> players;
     static List<GameObject> icebergs;
     static bool isIcebergMelting = false;
-
+    
     // Use this for initialization
     void Start () {
         killerWhaleTimer = Random.Range(15, 60);
@@ -20,6 +20,7 @@ public class GameData : MonoBehaviour {
         bestPlayer = 0;
         players = null;
         isIcebergMelting = false;
+        
     }
 	
 	// Update is called once per frame
