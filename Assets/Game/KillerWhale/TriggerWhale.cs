@@ -44,7 +44,13 @@ public class TriggerWhale : MonoBehaviour {
             {
                 ratio = 0;
 
-                rand = Random.Range(0, 2);
+                if (!idle)
+                {
+                    rand = Random.Range(0, 2);
+                    killa.setIdle(true);
+                    idle = true;
+                }
+
                 Vector2 dir = attackPoints[rand].transform.position - whale.transform.position;
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 whale.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -53,15 +59,18 @@ public class TriggerWhale : MonoBehaviour {
                 Vector3 targetPos = attackPoints[rand].TransformPoint(new Vector3(0, 0, 0));
                 whale.transform.position = Vector3.SmoothDamp(whale.transform.position, targetPos, ref vel, smoothTime);
 
-                //whale.transform.position = attackPoints[rand].position;
-                dist = Vector2.Distance(whale.transform.position, targetPos);
-
-                if (!idle)
+                if (whale.transform.position.x > attackPoints[rand].transform.position.x)
                 {
-                    killa.setIdle(true);
-                    idle = true;
+                    whale.flipY = true;
+                }
+                //if this position x < target position = going left & apply Y sprite flip
+                else if (whale.transform.position.x < attackPoints[rand].transform.position.x)
+                {
+                    whale.flipY = false;
                 }
 
+                //whale.transform.position = attackPoints[rand].position;
+                dist = Vector2.Distance(whale.transform.position, targetPos);
                 if (dist < 250.0f)
                 {
                     Debug.Log("RAWR");
