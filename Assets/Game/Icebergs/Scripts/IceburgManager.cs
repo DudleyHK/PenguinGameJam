@@ -10,19 +10,19 @@ public class IceburgManager : MonoBehaviour
 
     public Dictionary<int, GameObject> iceburgList = new Dictionary<int, GameObject>();
     public List<float> lanes = new List<float>();
-    public RectTransform upperWaterRectTransform;
+    public Collider2D upperWaterCollider;
     public ushort numberOfLanes = 6;
     public float laneWidth = 0f;
 
-    private float width = 0f;
-    private Vector3 topLeft;
+    public float width = 0f;
+    public Vector3 topLeft;
 
 
 
     private void Start()
     {
-        width = upperWaterRectTransform.localScale.x;
-        topLeft = upperWaterRectTransform.anchoredPosition3D;
+        width   = upperWaterCollider.bounds.size.x;
+        topLeft = upperWaterCollider.bounds.min;
 
         laneWidth = width / numberOfLanes;
 
@@ -88,7 +88,7 @@ public class IceburgManager : MonoBehaviour
             return Vector2.zero;
         }
 
-        var jumpNodeY = iceburg.transform.position.y + (iceburg.GetComponentInChildren<SpriteRenderer>().bounds.size.y * 2f);
+        var jumpNodeY = iceburg.transform.position.y + (iceburg.GetComponentInChildren<SpriteRenderer>().bounds.size.y);
         print("Teleport player to position " + new Vector2(iceburg.transform.position.x, jumpNodeY));
         return new Vector2(iceburg.transform.position.x, jumpNodeY);
         
