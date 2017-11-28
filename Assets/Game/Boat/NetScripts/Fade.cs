@@ -16,13 +16,11 @@ public class Fade : MonoBehaviour
     public float fadeUpSpeed = 0.25f;
     public  BoatManager boatManager;
     public SpriteRenderer netRenderer;
-    private Animator boatAnimator;
 
 
 
     private void Start()
     {
-        boatAnimator = boatManager.GetComponent<Animator>();
         alpha = netRenderer.color.a;
     }
 
@@ -35,7 +33,7 @@ public class Fade : MonoBehaviour
         switch(fadeState)
         {
             case FadeState.Off:
-                alpha = 0f;
+                alpha = 1f;
                 break;
             case FadeState.FadeIn:
                 alpha = Mathf.Lerp(alpha, 1, fadeDownSpeed * Time.deltaTime);
@@ -46,8 +44,6 @@ public class Fade : MonoBehaviour
         }
         colour = new Color(colour.r, colour.g, colour.b, alpha);
         netRenderer.color = colour;
-
-        boatAnimator.SetFloat("Alpha", alpha);
     }
 
 }

@@ -1,42 +1,35 @@
-﻿using System.Collections;using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Rope : MonoBehaviour 
+public class Rope : MonoBehaviour
 {
+    public BoatManager boatManager;
     public NetManager netManager;
     public LineRenderer line;
 
+   // public GameObject linePointTwo;
+    public GameObject linePointThree;
 
-    private void Start()
-    {
-        line = GetComponent<LineRenderer>();
-        line.SetPosition(0, transform.position);
-        line.SetPosition(1, transform.position);
-    }
+
 
 
     private void Update()
     {
-        // Chaneg this to be based on states
-        if(netManager.netStates != NetManager.NetStates.Off)
+        if(boatManager.boatState == BoatManager.BoatState.Off)
         {
-            line.SetPosition(0, this.transform.position);
-            line.SetPosition(1, new Vector3(
-                netManager.net.transform.position.x, 
-                netManager.net.transform.position.y + (netManager.net.GetComponent<SpriteRenderer>().size.y / 2f), 
-                netManager.net.transform.position.z));
-            line.startColor = Color.black;
-            line.endColor = Color.black;
+            //linePointTwo.transform.position = transform.position;
+            linePointThree.transform.position = transform.position;
         }
         else
         {
-            //destroy line
-            line.SetPosition(1, transform.position);
+            var yPos = (netManager.net.transform.position.y + (netManager.netRenderer.bounds.size.y / 2f));
+            var xPos = netManager.net.transform.position.x;
+
+            linePointThree.transform.position = new Vector3(xPos, yPos, netManager.net.transform.position.z);
+            //linePointTwo.transform.position = transform.position + linePointThree.transform.position;
+            //Debug.Log("half way between line pint 1 and 3 is " + linePointTwo.transform.position);
+
         }
     }
-
-
-
-
-
 }

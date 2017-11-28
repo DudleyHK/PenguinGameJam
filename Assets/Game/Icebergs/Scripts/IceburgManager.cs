@@ -8,17 +8,14 @@ public class IceburgManager : MonoBehaviour
     // Place a node the iceburgs size + the iceburgs position above.
     // Split the water into lanes.
 
-    public ushort numberOfLanes = 0;
     public Dictionary<int, GameObject> iceburgList = new Dictionary<int, GameObject>();
     public List<float> lanes = new List<float>();
     public RectTransform upperWaterRectTransform;
+    public ushort numberOfLanes = 6;
     public float laneWidth = 0f;
 
     private float width = 0f;
     private Vector3 topLeft;
-
-    public GameObject debugObj;
-
 
 
 
@@ -35,7 +32,6 @@ public class IceburgManager : MonoBehaviour
         // One extra for the end lane position.
         for(var i = 0; i < (numberOfLanes + 1); i++)
         {
-            //var clone = Instantiate(debugObj, new Vector3(laneOriginX, topLeft.y, topLeft.z), Quaternion.identity);
             lanes.Add(laneOriginX);
             laneOriginX += laneWidth;
         }
@@ -53,7 +49,6 @@ public class IceburgManager : MonoBehaviour
         {
             var lane = GetLane(iceburg.transform.position);
             iceburgList.Add(lane, iceburg);
-            //Debug.Log("Iceburg at position " + iceburg.transform.position + " at the lane of " + lane);
         }
     }
 
@@ -80,6 +75,12 @@ public class IceburgManager : MonoBehaviour
 
     public Vector2 GetIceburgJumpNode(int lane)
     {
+        if(!iceburgList.ContainsKey(lane))
+        {
+            Debug.Log("Ice burg list does not contain " + lane);
+            return Vector2.zero;
+        }
+
         var iceburg = iceburgList[lane];
         if(iceburg == null)
         {
@@ -87,8 +88,8 @@ public class IceburgManager : MonoBehaviour
             return Vector2.zero;
         }
 
-        var jumpNodeY = iceburg.transform.position.y + (iceburg.transform.localScale.y * 4f);
-        //var clone = Instantiate(debugObj, new Vector2(iceburg.transform.position.x, jumpNodeY), Quaternion.identity);
+        var jumpNodeY = iceburg.transform.position.y + (iceburg.GetComponentInChildren<SpriteRenderer>().bounds.size.y * 2f);
+        print("Teleport player to position " + new Vector2(iceburg.transform.position.x, jumpNodeY));
         return new Vector2(iceburg.transform.position.x, jumpNodeY);
         
     }

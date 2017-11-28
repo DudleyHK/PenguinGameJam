@@ -50,7 +50,7 @@ public class Swim : Fly
                 var targetNode = iceburgManager.GetIceburgJumpNode(laneNumber);
                 if(targetNode == Vector2.zero)
                 {
-                    Debug.Log("Run jump animation");
+                    Debug.Log("TODO:: Jump out of water animation");
                 }
                 else
                 {
@@ -75,10 +75,6 @@ public class Swim : Fly
         {
             transform.position = Vector3.LerpUnclamped(transform.position, targetNode, teleportSpeed * Time.deltaTime);
             
-            var dist = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), targetNode);
-           // Debug.Log("Distance " + dist);
-            //Debug.DrawLine(transform.position, targetNode);
-
             if(Vector2.Distance(transform.position, targetNode) <= distanceBreak) break;
 
             yield return false;
