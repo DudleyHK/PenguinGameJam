@@ -43,6 +43,12 @@ public class OxygenHungerHandler : MonoBehaviour
 
         hunger = Instantiate(hungerSprite, Vector3.zero, Quaternion.identity, this.transform);
         hungerFill = Instantiate(hungerSpriteFill, Vector3.zero, Quaternion.identity, this.transform);
+
+        bubble.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 0.0f);
+        bubbleFill.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, -1.0f);
+
+        hunger.transform.position = player.transform.position - new Vector3(18.0f, -36.0f, -1.0f);
+        hungerFill.transform.position = player.transform.position - new Vector3(18.0f, -36.0f, 0.0f);
     }
 
     // Update is called once per frame
@@ -161,12 +167,8 @@ public class OxygenHungerHandler : MonoBehaviour
 
     void positionBubble()
     {
-        bubble.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 1.0f);
-        bubbleFill.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 0.0f);
+        
         bubbleFill.transform.localScale = new Vector3(bubbleFill.transform.localScale.x, data.OxygenLevel * 2, bubbleFill.transform.localScale.z);
-
-        hunger.transform.position = player.transform.position - new Vector3(18.0f, -26.0f, 0.0f);
-        hungerFill.transform.position = player.transform.position - new Vector3(18.0f, -26.0f, 1.0f);
         hungerFill.transform.localScale = new Vector3(data.HungerLevel / 1.666666666666667f, hungerFill.transform.localScale.y, hungerFill.transform.localScale.z);
     }
 }
