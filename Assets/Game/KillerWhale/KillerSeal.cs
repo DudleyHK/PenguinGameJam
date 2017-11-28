@@ -49,6 +49,9 @@ public class KillerSeal : MonoBehaviour {
 
     void AttackPlayer()
     {
+
+        
+
         if (!setPoint)
         {
             fSprite.color = new Color(255, 255, 255, 1);
@@ -121,4 +124,5 @@ public class KillerSeal : MonoBehaviour {
         setPoint = false;
         attacking = _bool;
     }
+
 }

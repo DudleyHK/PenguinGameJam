@@ -12,7 +12,7 @@ public class PlayerCounter : MonoBehaviour {
     public PlayerAdding[] possiblePlayers;
 
     [SerializeField]
-    GameObject penguin;
+    GameObject penguin, iceBurg;
 
 	// Use this for initialization
 	void Start ()
@@ -78,7 +78,16 @@ public class PlayerCounter : MonoBehaviour {
                     GameObject newPlayer;
                     newPlayer = (GameObject)Instantiate(penguin, GameObject.Find("PlayerSpawn" + player.thisIndex).transform);
                     newPlayer.GetComponent<PlayerData>().PlayerIndex = player.thisIndex;
+
+                    GameObject newIceburg;
+                    newIceburg = (GameObject)Instantiate(iceBurg, 
+                                                        new Vector3(GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.x, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.y - 50, GameObject.Find("PlayerSpawn" + player.thisIndex).transform.position.z),
+                                                        GameObject.Find("PlayerSpawn" + player.thisIndex).transform.rotation);
+
                     //DontDestroyOnLoad(newPlayer.gameObject);
+
+
+
                 }
             }
         }
