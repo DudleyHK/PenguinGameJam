@@ -40,11 +40,11 @@ public class OxygenHungerHandler : MonoBehaviour
         getPlayer();
         setDefaultValues();
 
-        bubble = Instantiate(oxygenSprite, Vector3.zero, Quaternion.identity, this.transform);
-        bubbleFill = Instantiate(oxygenSpriteFill, Vector3.zero, Quaternion.identity, this.transform);
+        bubble = Instantiate(oxygenSprite, Vector3.zero, Quaternion.identity);
+        bubbleFill = Instantiate(oxygenSpriteFill, Vector3.zero, Quaternion.identity);
 
-        hunger = Instantiate(hungerSprite, Vector3.zero, Quaternion.identity, this.transform);
-        hungerFill = Instantiate(hungerSpriteFill, Vector3.zero, Quaternion.identity, this.transform);
+        hunger = Instantiate(hungerSprite, Vector3.zero, Quaternion.identity);
+        hungerFill = Instantiate(hungerSpriteFill, Vector3.zero, Quaternion.identity);
 
         bubble.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 0.0f);
         bubbleFill.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, -1.0f);
@@ -56,7 +56,6 @@ public class OxygenHungerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         positionBubble();
         data.HungerLevel -= Time.deltaTime * hungerDecrement;
 
@@ -173,8 +172,16 @@ public class OxygenHungerHandler : MonoBehaviour
 
     void positionBubble()
     {
-        
+        bubble.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, 0.0f);
+        bubbleFill.transform.position = player.transform.position - new Vector3(18.0f, -6.0f, -1.0f);
+
+        hunger.transform.position = player.transform.position - new Vector3(18.0f, -36.0f, -1.0f);
+        hungerFill.transform.position = player.transform.position - new Vector3(18.0f, -36.0f, 0.0f);
+
         bubbleFill.transform.localScale = new Vector3(bubbleFill.transform.localScale.x, data.OxygenLevel * 2, bubbleFill.transform.localScale.z);
         hungerFill.transform.localScale = new Vector3(data.HungerLevel / 1.666666666666667f, hungerFill.transform.localScale.y, hungerFill.transform.localScale.z);
+
+
+
     }
 }

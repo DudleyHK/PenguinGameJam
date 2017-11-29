@@ -10,6 +10,7 @@ class FaceDirection : AbstractBehaviour
         var right = inputState.GetButtonValue(inputButtons[0]);
         var left = inputState.GetButtonValue(inputButtons[1]);
 
+        print("face direction is " + right);
         if(right)
         {
             inputState.direction = Directions.Right;

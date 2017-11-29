@@ -49,7 +49,7 @@ public class IceburgManager : MonoBehaviour
         {
             var lane = GetLane(iceburg.transform.position);
             iceburgList.Add(lane, iceburg);
-            GameData.addIceberg(iceburg);
+           // GameData.addIceberg(iceburg);
         }
     }
 

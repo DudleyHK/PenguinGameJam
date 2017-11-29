@@ -20,22 +20,39 @@ public class PlayerManager : MonoBehaviour
         walkBehaviour  = GetComponent<Walk>();
         animator       = GetComponent<Animator>();
 		collisionState = GetComponent<CollisionState>();
+
+      
     }
 
 	private void Update()
 	{
-		if (collisionState.standing) 
+        this.transform.localScale = new Vector3(30 , 30, 1);
+
+        if (collisionState.standing) 
 		{
-			ChangeAnimationState (0);
-		}
+            // Idle
+            ChangeAnimationState(0);
+
+        }
 		if (inputState.absVelX > 0 && collisionState.standing) 
+		{
+            // Walking
+            ChangeAnimationState(0);
+		}
+		if (inputState.absVelY > 0 && PlayerData.PlayerState != PlayerData.PlayerStates.SWIMMING) 
 		{
 			ChangeAnimationState (1);
 		}
-		if (inputState.absVelY > 0) 
-		{
-			ChangeAnimationState (2);
-		}
+
+        if(PlayerData.PlayerState == PlayerData.PlayerStates.SWIMMING)
+        {
+            ChangeAnimationState(2);
+        }
+
+        if(PlayerData.PlayerState != PlayerData.PlayerStates.SWIMMING)
+        {
+            ChangeAnimationState(1);
+        }
 
 		animator.speed = walkBehaviour.running ? walkBehaviour.runMultiplier : 1;
 	}

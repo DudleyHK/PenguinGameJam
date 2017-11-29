@@ -9,11 +9,17 @@ public class GameData : MonoBehaviour {
     static int fishCap = 0;
     static int currentFishSpawned = 0;
     static List<GameObject> players;
-    static List<GameObject> icebergs;
+    public List<GameObject> icebergs;
     static bool isIcebergMelting = false;
     
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        var findIceburgs = GameObject.FindGameObjectsWithTag("Iceburg");
+        icebergs = new List<GameObject>(findIceburgs);
+
+
+
         killerWhaleTimer = Random.Range(15, 60);
         currentFishSpawned = 0;
         fishCap = 100;
@@ -48,7 +54,7 @@ public class GameData : MonoBehaviour {
         return bestPlayersIndex;
     }
 
-    public static void chooseMeltedIceberg()
+    public void chooseMeltedIceberg()
     {
         if(icebergs.Capacity > 0)
         {
@@ -105,10 +111,5 @@ public class GameData : MonoBehaviour {
         {
             isIcebergMelting = value;
         }
-    }
-
-    public static void addIceberg(GameObject iceberg)
-    {
-        icebergs.Add(iceberg);
     }
 }
