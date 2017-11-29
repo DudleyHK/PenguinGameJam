@@ -20,6 +20,8 @@ public class Swim : Fly
             var findWater = GameObject.FindGameObjectWithTag("Water");
             water = findWater;
         }
+
+        iceburgManager = FindObjectOfType<IceburgManager>();
     }
 
 
