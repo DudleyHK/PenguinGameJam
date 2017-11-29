@@ -163,7 +163,7 @@ public class OxygenHungerHandler : MonoBehaviour
 
         if (hungerIncrement < 0.1)
         {
-            hungerIncrement = 1.0f;
+            hungerIncrement = 2.5f;
         }
         if (hungerDecrement < 0.1)
         {
