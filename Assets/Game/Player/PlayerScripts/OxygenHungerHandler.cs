@@ -32,6 +32,8 @@ public class OxygenHungerHandler : MonoBehaviour
     private GameObject hunger;
     private GameObject hungerFill;
 
+    public GameObject dead;
+
     // Use this for initialization
     void Start()
     {
@@ -61,6 +63,8 @@ public class OxygenHungerHandler : MonoBehaviour
         if (data.HungerLevel < 0)
         {
             data.HungerLevel = 0;
+            Destroy(gameObject);
+            Instantiate(dead, this.transform.position, this.transform.rotation);
         }
 
         if (data.OxygenLevel > data.MaxOxygen / 2)
@@ -94,7 +98,9 @@ public class OxygenHungerHandler : MonoBehaviour
             if (data.OxygenLevel < 0)
             {
                 data.OxygenLevel = 0;
-				// or do we want drown sound to happen when you die?
+                Destroy(gameObject);
+                Instantiate(dead, this.transform.position, this.transform.rotation);
+                // or do we want drown sound to happen when you die?
 
             }
         }
