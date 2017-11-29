@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour {
 
@@ -35,6 +36,8 @@ public class GameData : MonoBehaviour {
         {
             chooseMeltedIceberg();
         }
+
+
 	}
 
     public static int BestPlayer()
