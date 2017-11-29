@@ -57,7 +57,8 @@ public class PlayerData : MonoBehaviour
 
     void Start()
     {
-		audioSource = GameObject.Find("SFX Manager").GetComponent<AudioSource>();
+		audioSource = //GameObject.Find("SFX Manager").
+			GetComponent<AudioSource>();
         //playerState = PlayerStates.NONE;
         hungerLevel = 50.0f;
         oxygenLevel = 50.0f;
@@ -173,7 +174,7 @@ public class PlayerData : MonoBehaviour
 		{
 			timer += Time.deltaTime;
 			yield return false;
-			if (timer > 3f)
+			if (timer > 0f)
 			{
 				yield return true;
 			}
