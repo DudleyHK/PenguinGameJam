@@ -40,7 +40,14 @@ public class Fly : AbstractBehaviour
         }
 		if (fly && !playSound)
 		{
-			StartCoroutine (playerData.PlayNext (playerData.jumpSound));
+			if (this.transform.position.y > -200)
+			{
+				StartCoroutine (playerData.PlayNext (playerData.jumpSound));
+			}
+			else 
+			{
+				StartCoroutine (playerData.PlayNext (playerData.swimSound));
+			}
 			playSound = true;
 		} 
 
