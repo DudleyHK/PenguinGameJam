@@ -174,7 +174,7 @@ public class PlayerData : MonoBehaviour
 		{
 			timer += Time.deltaTime;
 			yield return false;
-			if (timer > 0f)
+			if (timer > 3f)
 			{
 				yield return true;
 			}
@@ -182,4 +182,12 @@ public class PlayerData : MonoBehaviour
 		audioSource.PlayOneShot (clip);
 		yield return true;
 	}
+
+
+	public IEnumerator PlayNow(AudioClip clip)
+	{
+		audioSource.PlayOneShot (clip);
+		yield return true;
+	}
+
 }

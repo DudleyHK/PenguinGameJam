@@ -35,7 +35,7 @@ public class Swim : Fly
 		} 
 		else 
 		{
-			StartCoroutine(playerData.PlayNext(playerData.swimSound));
+			//StartCoroutine(playerData.PlayNext(playerData.swimSound));
 		}
     }
 

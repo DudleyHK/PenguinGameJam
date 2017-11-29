@@ -74,8 +74,7 @@ public class OxygenHungerHandler : MonoBehaviour
         }
             else
         {
-			//drown sound plays when a player 
-			StartCoroutine(data.PlayNext(data.drowningSound));
+			//drown sound plays w
             bubble.SetActive(true);
             bubbleFill.SetActive(true);
         }
@@ -100,7 +99,8 @@ public class OxygenHungerHandler : MonoBehaviour
                 data.OxygenLevel = 0;
                 Destroy(gameObject);
                 Instantiate(dead, this.transform.position, this.transform.rotation);
-                // or do we want drown sound to happen when you die?
+				// or do we want drown sound to happen when you die?
+				StartCoroutine(data.PlayNow(data.drowningSound));
 
             }
         }
@@ -120,7 +120,7 @@ public class OxygenHungerHandler : MonoBehaviour
 
         if (other.tag == "Fish")
 		{
-			StartCoroutine(data.PlayNext(data.eatSound));
+			StartCoroutine(data.PlayNow(data.eatSound));
             Destroy(other.gameObject);
             GameData.FishSpawnedCount--;
             data.FishConsumed++;
