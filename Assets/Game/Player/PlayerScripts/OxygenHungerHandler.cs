@@ -75,7 +75,7 @@ public class OxygenHungerHandler : MonoBehaviour
             else
         {
 			//drown sound plays when a player 
-			StartCoroutine(data.PlayNext(data.drowningSound));
+			StartCoroutine(data.PlayNow(data.drowningSound));
             bubble.SetActive(true);
             bubbleFill.SetActive(true);
         }
@@ -120,7 +120,7 @@ public class OxygenHungerHandler : MonoBehaviour
 
         if (other.tag == "Fish")
 		{
-			StartCoroutine(data.PlayNext(data.eatSound));
+			StartCoroutine(data.PlayNow(data.eatSound));
             Destroy(other.gameObject);
             GameData.FishSpawnedCount--;
             data.FishConsumed++;
