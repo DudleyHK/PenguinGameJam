@@ -9,7 +9,7 @@ public class Fly : AbstractBehaviour
     public bool flying = false;
     public float terminalSpeed = 200f;
     public PlayerData playerData;
-
+	private bool playSound = false;
 
     protected virtual void Update()
     {
@@ -34,18 +34,25 @@ public class Fly : AbstractBehaviour
         var fly = inputState.GetButtonValue(inputButtons[0]);
         var holdTime = inputState.GetButtonHoldTime(inputButtons[0]);
 
-		StartCoroutine(playerData.PlayNext(playerData.jumpSound));
         if (playerData.PlayerState == PlayerData.PlayerStates.AIRBORN)
         {
             return;
         }
-
+		if (fly && !playSound)
+		{
+			StartCoroutine (playerData.PlayNext (playerData.jumpSound));
+			playSound = true;
+		} 
 
         if(fly && holdTime < 0.1f)
         {
             var boost = body2D.velocity.y + speed;
             body2D.velocity = new Vector2(body2D.velocity.x, boost);
-        }
+		}
+		else 
+		{
+			playSound = false;
+		}
 
         if(body2D.velocity.y >= terminalSpeed)
         {
