@@ -96,8 +96,9 @@ public class OxygenHungerHandler : MonoBehaviour
             if (data.OxygenLevel < 0)
             {
                 data.OxygenLevel = 0;
-                Destroy(gameObject);
                 Instantiate(dead, this.transform.position, this.transform.rotation);
+                Destroy(gameObject);
+                
 				// or do we want drown sound to happen when you die?
 				StartCoroutine(data.PlayNow(data.drowningSound));
 
